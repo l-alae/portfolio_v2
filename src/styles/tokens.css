@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  --color-background: #EDE7DA;
+  --color-bg: var(--color-background);
+  --color-surface: #F5F0E6;
+  --color-text: #211E19;
+  --color-muted: #635C51;
+  --color-border: #D3CABA;
+  --color-accent: #9C5424;
+  --color-accent-soft: rgba(156, 84, 36, 0.08);
+  --glow-color: rgba(33, 30, 25, 0.045);
+  --color-overlay: rgba(0, 0, 0, 0.85);
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-size-ui: 0.75rem;
+  --font-size-body: 1.05rem;
+  --font-size-h1: clamp(2.5rem, 6vw, 4rem);
+  --line-height-body: 1.65;
+  --line-height-heading: 1.05;
+  --tracking-ui: 0.08em;
+  --tracking-heading: -0.025em;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+  --content-width: 68.75rem;
+  --prose-width: 68ch;
+  --header-height: 4rem;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-background: #14120F;
+  --color-bg: var(--color-background);
+  --color-surface: #1C1A16;
+  --color-text: #EDE8DF;
+  --color-muted: #9A938A;
+  --color-border: #2C2822;
+  --color-accent: #C2703D;
+  --color-accent-soft: rgba(194, 112, 61, 0.08);
+  --glow-color: rgba(194, 112, 61, 0.10);
+}

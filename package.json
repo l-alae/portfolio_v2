@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "framer-motion": "^13.1.1",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "^6.30.1",
+    "vite": "latest"
+  }
+}

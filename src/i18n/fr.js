@@ -1,0 +1,340 @@
+export default {
+  meta: { title: 'Portfolio' },
+  brand: { mark: 'AL' },
+  accessibility: { skipToContent: 'Aller au contenu' },
+  nav: {
+    logo: 'Accueil du portfolio',
+    home: 'Accueil',
+    experience: 'Expérience',
+    projects: 'Projets',
+    about: 'À propos',
+    contact: 'Contact',
+    openMenu: 'Ouvrir le menu de navigation',
+    closeMenu: 'Fermer le menu de navigation',
+    primary: 'Navigation principale',
+  },
+  theme: { switchToDark: 'Activer le thème sombre', switchToLight: 'Activer le thème clair' },
+  language: { label: 'Choisir la langue', english: 'Anglais', french: 'Français', englishShort: 'EN', frenchShort: 'FR' },
+  footer: { name: 'AL', copyright: '{year} · Conçu avec soin et curiosité.' },
+  home: {
+    label: 'INGÉNIERIE DES DONNÉES · RABAT, MAROC',
+    name: 'Alae Laita',
+    lede: 'Étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. Je travaille sur le clustering, les pipelines et tout ce qui, loin des projecteurs, rend les données réellement exploitables — des modèles de segmentation qui restent fiables sur des données inédites et une orchestration qui tourne sans surveillance.',
+    ctaProjects: 'Voir les projets',
+    ctaContact: 'Me contacter',
+    selectedWork: 'PROJETS SÉLECTIONNÉS',
+    allProjects: 'TOUS LES PROJETS',
+  },
+  experience: {
+    eyebrow: 'EXPÉRIENCE',
+    title: 'Expérience',
+    lightbox: { close: 'Fermer l’image' },
+    entries: {
+      pfe: {
+        dates: 'MARS — AOÛT 2026',
+        location: 'CASABLANCA, MAROC',
+        role: 'Projet de fin d’études',
+        org: 'DA TECHNOLOGIES — AKWA GROUP / AFRIQUIA GAZ',
+        body: [
+          {
+            lead: 'Six mois consacrés à la création d’un système de profilage pour les 660 stations-service du réseau Afriquia Gaz.',
+            rest: ' Le cœur du projet reposait sur une architecture de clustering K-Means à deux pipelines sous PySpark, appliquant en parallèle deux traitements aux mêmes transactions : suppression des valeurs aberrantes d’un côté, winsorisation de l’autre. Ce choix changeait directement les segments que le modèle pouvait révéler. Le profil industriel et flotte, Stations Spécialisées, ne subsistait qu’avec la winsorisation ; la suppression des valeurs extrêmes le faisait disparaître.',
+          },
+          {
+            lead: 'La saisonnalité a été modélisée séparément, puis utilisée comme second axe de clustering.',
+            rest: ' J’ai ajusté des régressions OLS par station avec des termes de Fourier pour les cycles annuels et un encodage explicite des fêtes du calendrier hégirien, avant de regrouper à nouveau les stations selon leur réaction au calendrier — en distinguant celles qui évoluent avec le Ramadan et l’Aïd de celles qui y sont peu sensibles. J’ai également développé et livré aux dépositaires d’Afriquia Gaz un modèle SARIMAX(1,1,1) de prévision du tonnage hebdomadaire.',
+          },
+          {
+            lead: 'L’analyse a été mise à disposition des équipes métier sous forme de tableaux de bord Tableau.',
+            rest: ' Une vue opérationnelle, un tableau de bord au format personnalisé et une page consacrée aux règles de segmentation présentaient les seuils de chaque segment, la répartition des types de stations et de transactions, ainsi que six années d’historique par profil.',
+          },
+          {
+            lead: 'La seconde moitié du projet a généralisé ce travail dans Profiling.ai, une plateforme mutualisée de profilage à la demande.',
+            rest: ' React et Vite côté interface, Node et Express côté serveur, avec un moteur de clustering Python et Afriquia Gaz comme premier client. Les utilisateurs importent leurs propres données, choisissent k à partir d’une analyse guidée du coude et du coefficient de silhouette, règlent le prétraitement selon l’asymétrie de chaque variable et conservent l’historique de leurs exécutions. Le passage du notebook à la plateforme a fait toute la différence : le pipeline initial se contentait de standardiser les variables et regroupait 81.5% des observations dans un seul cluster. Une winsorisation au P98, une transformation logarithmique et une pondération des variables ont corrigé ce déséquilibre.',
+          },
+        ],
+        tech: ['PySpark', 'Python', 'scikit-learn', 'K-Means', 'SARIMAX', 'OLS', 'Tableau', 'React', 'Node.js', 'Express', 'PostgreSQL', 'SQL'],
+        images: {
+          groups: {
+            tableau: 'TABLEAU — LIVRAISON DE LA SEGMENTATION',
+            platform: 'PROFILING.AI — LA PLATEFORME',
+          },
+          items: {
+            rules: { caption: 'RÈGLES DE SEGMENTATION — SEUILS, TYPE DE STATION, TYPE DE TRANSACTION ET SIX ANS D’HISTORIQUE PAR SEGMENT' },
+            stations: { caption: 'TABLEAU DE BORD DE SEGMENTATION DES STATIONS — 561 STATIONS, QUATRE SEGMENTS' },
+            gaz: { caption: 'SEGMENTATION DES PDV GAZ — 69 741 POINTS DE VENTE, SIX SEGMENTS' },
+            platformDashboard: { caption: 'TABLEAU DE BORD GLOBAL — RÉPARTITION DES SEGMENTS ET KPI D’UN JEU DE DONNÉES IMPORTÉ' },
+            platformImport: { caption: 'IMPORT MULTISOURCE — FICHIER, POSTGRESQL OU DATABRICKS' },
+            platformHistory: { caption: 'HISTORIQUE DES EXÉCUTIONS — CHAQUE CLUSTERING CONSERVÉ AVEC SON K, SA SILHOUETTE ET SES VARIABLES' },
+          },
+        },
+      },
+      ministry: {
+        dates: 'STAGE',
+        location: 'MAROC',
+        role: 'Stage en data science',
+        org: 'MINISTÈRE DU TRANSPORT ET DE LA LOGISTIQUE',
+        body: [
+          'Exploration, nettoyage et structuration de jeux de données issus de plusieurs directions, puis conception et évaluation de modèles de machine learning destinés à anticiper les cessations d’activité.',
+          'L’essentiel des progrès est venu du travail le moins visible : améliorer la qualité des données et pousser l’optimisation des hyperparamètres jusqu’à obtenir des performances stables d’une évaluation à l’autre, plutôt qu’un bon résultat sur une seule séparation favorable.',
+        ],
+      },
+      aeinpt: {
+        dates: '2022',
+        location: 'INPT RABAT',
+        role: 'Vice-Président, puis Président',
+        org: 'AEINPT — ASSOCIATION DES ÉTUDIANTS DE L’INPT',
+        body: [
+          'Pilotage d’initiatives étudiantes et coordination d’équipes issues de plusieurs départements.',
+          'Organisation de l’Olympiade INPT, un événement réunissant plus de 6 000 participants, de la coordination technique à la logistique et à la communication.',
+        ],
+      },
+    },
+  },
+  projectIndex: {
+    eyebrow: 'PROJETS',
+    title: 'Projets',
+    lede: 'Une sélection de travaux en ingénierie des données, machine learning et conception d’interfaces qui rendent ces systèmes utilisables.',
+  },
+  projectDetail: {
+    eyebrow: 'PROJET',
+    back: '← TOUS LES PROJETS',
+    closeImage: 'Fermer l’image',
+    liveDemo: 'VOIR LA DÉMO',
+    openLiveDemo: 'Ouvrir la démo',
+    source: 'CODE SOURCE',
+  },
+  about: {
+    eyebrow: 'À PROPOS',
+    title: 'À propos',
+    bio: [
+      'Je suis étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. La plupart de mes projets se situent à l’endroit où la donnée cesse d’être un tableau pour devenir une décision : une segmentation exploitable par une équipe commerciale, des pipelines qui tournent sans surveillance et des interfaces qui rendent les résultats d’un modèle compréhensibles sans avoir à lire le modèle.',
+      'J’aime les aspects du travail qui se prêtent mal aux photos. Le traitement des valeurs aberrantes qui décide si un segment entier apparaît ou disparaît. Des tests qui interrompent un DAG avant que des données erronées n’atteignent leurs utilisateurs. La différence entre un modèle performant une fois et un modèle qui tient sur des données qu’il n’a jamais vues.',
+      'En dehors de la data, j’écris de la fiction. Ces deux activités sont finalement moins éloignées qu’elles n’en ont l’air : toutes deux consistent surtout à regarder ce qui est réellement là, plutôt que ce que l’on s’attendait à trouver.',
+    ],
+    downloadCv: 'TÉLÉCHARGER LE CV',
+    skills: {
+      eyebrow: 'COMPÉTENCES',
+      title: 'Savoir-faire',
+      spokenEyebrow: 'LANGUES',
+      spokenLanguages: ['Arabe', 'Français', 'Anglais'],
+      groups: {
+        pipelines: 'CODE ET TRAITEMENT',
+        modelling: 'MODÉLISATION',
+        storage: 'STOCKAGE',
+        interfaces: 'INTERFACES ET OUTILS',
+      },
+    },
+  },
+  contact: {
+    eyebrow: 'CONTACT',
+    title: 'Contact',
+    lede: 'Pour une opportunité, une collaboration ou simplement échanger autour de mon travail.',
+    links: [
+      { label: 'E-MAIL', value: 'laita.alae@gmail.com', href: 'mailto:laita.alae@gmail.com', external: false },
+      { label: 'GITHUB', value: 'github.com/l-alae', href: 'https://github.com/l-alae', external: true },
+      { label: 'LINKEDIN', value: 'linkedin.com/in/alae-laita-623b0818b', href: 'https://linkedin.com/in/alae-laita-623b0818b', external: true },
+    ],
+  },
+  pages: {
+    home: { eyebrow: 'Introduction', title: 'Accueil', placeholder: 'Contenu à venir.' },
+    experience: { eyebrow: 'Parcours choisi', title: 'Expérience', placeholder: "Contenu sur l’expérience à venir." },
+    projects: { eyebrow: 'Études de cas', title: 'Projets', placeholder: 'Contenu des projets à venir.' },
+    projectDetail: { eyebrow: 'Détail du projet', placeholder: 'Détails du projet à venir.' },
+    about: { eyebrow: 'Profil', title: 'À propos', placeholder: 'Contenu à propos à venir.' },
+    contact: { eyebrow: 'Prendre contact', title: 'Contact', placeholder: 'Contenu de contact à venir.' },
+    notFound: { eyebrow: 'Erreur 404', title: 'Page introuvable', placeholder: 'La page demandée est introuvable.' },
+  },
+  projects: {
+    status: { inProgress: 'EN COURS' },
+    capitalBikeshare: {
+      title: 'Capital Bikeshare — Segmentation des stations',
+      blurb: 'Cinq profils de stations interprétables, établis à partir des seuls usages de 589 stations et 15,4 millions de trajets, avec une stabilité de 81,5 % sur des données inédites.',
+      lede: 'Toutes les stations avec bornes de Capital Bikeshare à Washington DC, regroupées selon leurs usages réels à partir de 15.4 millions de trajets — avec un clustering exécuté en direct dans le navigateur pour modifier le modèle et observer immédiatement la réaction de la carte.',
+      stats: [
+        { label: 'STATIONS', value: '589' },
+        { label: 'TRAJETS', value: '15,361,854' },
+        { label: 'PÉRIODE', value: '2022-01 → 2026-07' },
+        { label: 'APPRENTISSAGE / HOLDOUT', value: '2025-07 / 2025-08–2026-07' },
+        { label: 'STABILITÉ HOLDOUT', value: '81.5%' },
+      ],
+      tech: ['Python', 'pandas', 'scikit-learn', 'K-Means', 'PCA', 'statsmodels', 'React', 'Vite', 'Leaflet', 'Recharts', 'Web Workers'],
+      table: {
+        label: 'Synthèse des clusters Capital Bikeshare',
+        columns: {
+          cluster: 'Cluster',
+          stations: 'Stations',
+          memberShare: 'Part abonnés',
+          weekdayPeak: 'Pic en semaine',
+          medianTrips: 'Trajets médians',
+        },
+        rows: [
+          { cluster: 'Commuter origin', stations: '204', memberShare: '61%', weekdayPeak: 'départs 08:00', medianTrips: '10,466' },
+          { cluster: 'Dense residential core', stations: '132', memberShare: '67%', weekdayPeak: 'départs 18:00', medianTrips: '73,745' },
+          { cluster: 'Employment destination', stations: '118', memberShare: '63%', weekdayPeak: 'arrivées 08:00', medianTrips: '43,434' },
+          { cluster: 'Peripheral recreational', stations: '89', memberShare: '41%', weekdayPeak: 'départs 17:00', medianTrips: '2,232' },
+          { cluster: 'Monumental leisure', stations: '46', memberShare: '39%', weekdayPeak: 'départs 17:00', medianTrips: '48,746' },
+        ],
+      },
+      images: {
+        header: { caption: 'EN-TÊTE ET CARTE — 589 STATIONS, 15,361,854 TRAJETS, DE JANVIER 2022 À JUILLET 2026' },
+        controls: { caption: 'DÉPLACEZ LE CURSEUR K OU DÉSACTIVEZ UN BLOC DE VARIABLES : K-MEANS SE RÉENTRAÎNE DANS LE NAVIGATEUR SUR LES 589 STATIONS ET LES 90 DIMENSIONS' },
+        clusters: { caption: 'LES CINQ TYPES DE STATIONS ET LEURS VOLUMES QUOTIDIENS. LA LIGNE POINTILLÉE MARQUE LE CHANGEMENT D’ENREGISTREMENT D’AOÛT 2025' },
+        drawer: { caption: 'SÉLECTIONNER UNE STATION CHARGE SES DÉTAILS À LA DEMANDE. SOUS ENVIRON 5,000 TRAJETS, UN AVERTISSEMENT DE BRUIT EST AFFICHÉ' },
+        mobile: { caption: 'SOUS 640PX, LES PANNEAUX PASSENT SUR UNE COLONNE ET LES VUES D’ANALYSE REJOIGNENT UNE BARRE D’ONGLETS' },
+      },
+      sections: {
+        findings: {
+          eyebrow: '01',
+          title: 'Résultats',
+          intro: ['Cinq types de stations interprétables émergent des seuls usages. Le modèle ne reçoit aucune information géographique, foncière ou descriptive : uniquement la forme horaire des départs et arrivées, la répartition entre week-end et semaine, la part des abonnés et la saisonnalité.'],
+          body: [
+            'Deux de ces clusters se distinguent par la phase de leur profil quotidien plutôt que par leur composition. Commuter origin atteint son pic de départs à 08:00 ; Employment destination son pic d’arrivées à 08:00. Leurs parts d’abonnés sont presque identiques — 61% et 63% — et c’est donc l’heure du pic qui les sépare. La distinction entre quartiers résidentiels et pôles d’emploi est ainsi retrouvée sans aucune information de localisation. La carte place les clusters là où on les attend : Monumental leisure autour du National Mall et des quais, Dense residential core dans les quartiers de maisons mitoyennes au nord du centre-ville.',
+            'Le modèle conserve une stabilité de 81.5% sur les données de holdout. Entraîné de 2022-01 à 2025-07, il est appliqué sans aucune modification — centroïdes figés, aucun réentraînement — aux douze mois suivants. 480 stations sur 589 gardent leur cluster. Ce chiffre constitue une borne basse : la fenêtre de holdout ne couvre que douze mois, son bloc saisonnier ne peut donc pas être corrigé de sa tendance comme celui de la période d’apprentissage, et une partie des 109 divergences relève de la mesure plutôt que d’un changement de comportement.',
+          ],
+        },
+        recording: {
+          eyebrow: '02',
+          title: 'Un changement d’enregistrement détecté, plutôt qu’absorbé par les clusters',
+          body: [
+            'Le nombre de trajets bondit en août 2025 pour une raison sans rapport avec la demande. Au lieu de laisser cette rupture déformer les variables, l’étape d’ingestion la diagnostique.',
+            'Les trajets sans station à l’une ou l’autre extrémité chutent de 71% en un mois, de 142,110 à 41,130, tandis que les trajets attribués à une station progressent de 13% pendant un mois où le volume total recule de 9.4% — une variation saisonnière normale. La composition de la flotte reste identique de part et d’autre. La part des abonnés évolue en sens opposé entre les deux ensembles, ce que la saison ne peut expliquer. 19 des 20 principales stations progressent par rapport à un témoin en glissement annuel.',
+            'L’opérateur a donc vraisemblablement commencé à rattacher les trajets de vélos électriques sans borne aux stations voisines. Il s’agit d’un changement d’enregistrement, pas d’usage. La période d’apprentissage s’arrête donc à 2025-07 afin que le modèle soit entraîné sur un seul régime, et les mois postérieurs à la rupture deviennent le holdout. Les volumes antérieurs ne sont pas recalibrés : cela reviendrait à inventer des attributions par station absentes des données.',
+          ],
+        },
+        method: {
+          eyebrow: '03',
+          title: 'Méthode',
+          body: [
+            'Le travail se partage selon une frontière voulue, et non accidentelle.',
+            'Hors ligne, en Python, se trouvent les opérations coûteuses ou qui doivent rester figées : ingestion et nettoyage de 24.2M de lignes brutes pour obtenir 15.4M de trajets exploitables, construction d’une matrice de 90 variables par station — 24 heures de départ en semaine, 24 d’arrivée en semaine, 24 de départ le week-end, 12 variables saisonnières et 6 de composition et de volume — standardisation à partir des seules statistiques de la période d’apprentissage, PCA et balayage de k=2 à 10.',
+            'En direct, dans le navigateur, se trouve tout ce qu’un lecteur peut vouloir interroger : K-Means lui-même, réentraîné à chaque mouvement du curseur et à chaque activation ou désactivation d’un bloc de variables, en environ 300ms pour les 589 stations.',
+            'Cette frontière répond à des contraintes différentes. La construction des variables demande vingt minutes sur 15.4M de trajets et doit être identique pour tout le monde ; elles sont donc livrées sous forme de JSON précalculé. Le clustering est peu coûteux et son résultat est précisément ce qu’un évaluateur voudra tester : « que se passe-t-il si la saisonnalité ne compte plus ? » trouve une réponse dans le tableau de bord en 300ms, sans devoir être accepté sur parole.',
+            'Deux éléments restent volontairement fixes. La projection PCA n’est calculée qu’une fois afin que les points ne se déplacent jamais : le nuage constitue une carte stable de l’espace des stations sur laquelle les clusterings sont peints. Dans la configuration de référence — k=5, tous les blocs actifs — les étiquettes affichées viennent du modèle scikit-learn hors ligne, car tous les chiffres publiés ont été calculés à partir de celui-ci. Le modèle du navigateur s’exécute tout de même, afin que l’inertie et la silhouette en direct restent des comparaisons honnêtes.',
+            'Sous 640px, les panneaux se replient en une colonne et les quatre vues d’analyse passent dans une barre d’onglets, ce qui maintient la page à quelques écrans plutôt qu’une dizaine. La carte Leaflet conserve une seule position dans le DOM à toutes les largeurs — le CSS gère la réorganisation — car la remonter lors d’un changement de viewport la détruirait pendant que les callbacks de Leaflet sont encore en cours.',
+          ],
+        },
+        limitations: {
+          eyebrow: '04',
+          title: 'Limites',
+          body: [
+            'La silhouette reste inférieure à 0.19 pour toutes les valeurs de k, avec un maximum de 0.1845 à k=2 puis environ 0.06 à partir de k=4. Cette métrique ne permet pas de trancher ici. Le choix de k=5 vient du coude d’inertie — le gain marginal passe sous 4% par étape à k=5 — et de l’interprétabilité : cinq clusters correspondent au point où chacun se distingue par un bloc de variables différent, plutôt que par une subdivision plus fine du même profil. Ce n’est pas un optimum métrique et il n’est pas présenté comme tel.',
+            'Les dix premières composantes principales expliquent 58.8% de la variance, dont 16.7% pour PC1 et 11.2% pour PC2. Le comportement des stations forme un continuum, pas cinq groupes séparés. Le nuage de points n’est qu’une projection partielle : deux stations superposées dans cette vue peuvent être très différentes dans les quelque quatre-vingts dimensions écartées. Le clustering s’exécute bien dans les 90 dimensions, jamais sur les coordonnées 2D.',
+            'Les stations à faible volume sont bruitées. Sous environ 5,000 trajets, un profil horaire sur 24 heures normalisé par ligne reflète surtout le bruit d’échantillonnage. Les cinq stations ayant la plus grande norme dans la matrice sont toutes de petites stations périphériques : il s’agit de bruit lié à la normalisation, pas d’un comportement distinctif, et le volet de détail le signale au lieu de le présenter comme un résultat.',
+            'Les problèmes de qualité sont signalés, jamais corrigés silencieusement. 514 stations présentent une dispersion de coordonnées supérieure à 500m, mais seules 7 ont également un p99 au-delà de ce seuil ; pour les autres, il s’agit d’un unique point GPS errant. 92 identifiants de stations correspondent à plusieurs noms, et 7 noms à plusieurs identifiants. Ces cas sont imprimés sous forme de tableaux pour décision humaine.',
+          ],
+        },
+        attribution: {
+          eyebrow: '05',
+          title: 'Données et attribution',
+          body: [
+            'Données de trajets : données système de Capital Bikeshare, utilisées conformément au Capital Bikeshare Data License Agreement. Les archives mensuelles sont récupérées depuis le bucket S3 public de l’opérateur ; aucun nom de fichier n’est codé en dur, l’index XML du bucket est analysé puis filtré.',
+            'Tuiles du fond de carte : © Esri — Esri, HERE, Garmin, © contributeurs OpenStreetMap et communauté des utilisateurs SIG.',
+            'Ce projet n’est ni affilié à Capital Bikeshare ou Lyft, ni approuvé par ces organisations.',
+          ],
+        },
+      },
+    },
+    eltPipeline: {
+      title: 'Pipeline ELT — Données cinématographiques',
+      blurb: 'Une extraction de Postgres vers Postgres, enrichie par des transformations dbt et orchestrée de bout en bout par un DAG Airflow.',
+      tech: ['Airflow', 'dbt', 'PostgreSQL', 'Docker'],
+      meta: [
+        { label: 'STACK', value: 'Airflow · dbt · PostgreSQL · Docker' },
+        { label: 'FLUX', value: 'Postgres → Postgres' },
+        { label: 'RÔLE', value: 'Projet individuel' },
+      ],
+      body: [
+        'Un pipeline ELT conteneurisé qui transfère des données cinématographiques d’une instance PostgreSQL source vers une instance de destination, avec une couche de transformation construite dans dbt et une orchestration complète assurée par un unique DAG Airflow.',
+        'L’extraction et le chargement sont exécutés par un script Python appelé lors de la première tâche. dbt construit ensuite les modèles sur les tables chargées, dont une requête qui joint chaque film à sa catégorie de note et à son acteur, ainsi qu’un modèle incrémental qui ne traite que les nouvelles lignes lors des exécutions suivantes. Une dernière tâche lance les tests dbt et met le DAG en échec dès qu’une assertion est rompue : douze tests couvrent l’unicité, les valeurs nulles et l’intégrité référentielle entre films, acteurs et évaluations.',
+        'L’ensemble fonctionne sous Docker : une seule commande Compose suffit à démarrer le pipeline, sans installation locale de PostgreSQL ni d’Airflow.',
+      ],
+      images: [
+        { caption: 'DAG AIRFLOW — RUN_ELT_SCRIPT → DBT_RUN → DBT_TEST, TOUT EST AU VERT' },
+        { caption: 'RÉSULTAT DE REQUÊTE — FILMS JOINTS À LEUR CATÉGORIE DE NOTE ET À LEUR ACTEUR' },
+        { caption: 'EXÉCUTION DES TESTS DBT — 12 TESTS RÉUSSIS' },
+      ],
+    },
+    heartDisease: {
+      title: 'Application de prédiction des maladies cardiaques',
+      blurb: 'Une régression logistique entraînée sur le jeu de données UCI, exposée par une API Flask conteneurisée et reliée à une interface React.',
+      tech: ['React', 'Flask', 'scikit-learn', 'Docker'],
+      meta: [
+        { label: 'STACK', value: 'React · Flask · scikit-learn · Docker' },
+        { label: 'DONNÉES', value: 'Jeu de données UCI sur les maladies cardiaques' },
+        { label: 'MODÈLE', value: 'Régression logistique' },
+        { label: 'RÔLE', value: 'Projet individuel' },
+      ],
+      body: [
+        'Un modèle de régression logistique entraîné sur le jeu de données UCI consacré aux maladies cardiaques, servi par une API de prédiction et intégré à une interface utilisable par une personne sans expertise technique.',
+        'Le modèle est entraîné avec scikit-learn puis sauvegardé avant d’être chargé par une API Flask exposant un unique endpoint de prédiction. L’interface React recueille les données cliniques, les envoie à l’API et affiche la probabilité retournée. Les deux services sont conteneurisés et orchestrés avec PostgreSQL pour conserver les cas soumis.',
+        'L’enjeu principal n’était pas le modèle — une régression logistique sur un petit jeu tabulaire reste simple — mais tout le chemin entre l’artefact entraîné et un outil réellement accessible depuis un navigateur.',
+      ],
+      images: [{ caption: 'INTERFACE DE PRÉDICTION' }],
+    },
+    powerbi: {
+      title: 'Power BI',
+      blurb: 'Détails du projet à venir.',
+      tech: [],
+      meta: [{ label: 'STATUT', value: 'En cours' }],
+      body: ['Ce projet est toujours en cours. L’étude de cas sera publiée prochainement.'],
+      images: [],
+    },
+    markethub: {
+      title: 'MarketHub — Marketplace full-stack',
+      blurb: 'Une marketplace avec authentification, gestion des rôles et panneau d’administration, déployée sur Vercel, Render et MongoDB Atlas.',
+      lede: 'Une marketplace de produits avec authentification, gestion des rôles et panneau d’administration — réalisée dans le cadre d’un module de développement web et de sécurité, puis déployée sur trois services plutôt que laissée en local.',
+      tech: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT', 'TailwindCSS', 'Chart.js'],
+      meta: [
+        { label: 'ENDPOINTS', value: '14' },
+        { label: 'TESTS', value: '35 réussis' },
+        { label: 'DÉPLOIEMENT', value: 'Vercel · Render · Atlas (API retirée)' },
+        { label: 'CONTEXTE', value: 'Projet académique, INPT' },
+      ],
+      liveLabel: 'VOIR L’INTERFACE',
+      notice: {
+        label: 'FRONTEND UNIQUEMENT',
+        body: "L'interface est en ligne mais l'API derrière ne l'est plus — le backend, hébergé sur une offre gratuite, a été retiré après la fin du module, donc la connexion et les données produits ne se chargeront pas. Le dépôt contient tout ce qu'il faut pour l'exécuter en local.",
+      },
+      sections: {
+        whatItDoes: {
+          eyebrow: '01',
+          title: 'Fonctionnalités',
+          body: [
+            'Les utilisateurs s’inscrivent, se connectent et gèrent leurs propres annonces ; les administrateurs gèrent celles de tous les utilisateurs. Chaque produit possède une image, une catégorie, un prix et un stock. La liste propose une recherche plein texte sur le nom et la description, des filtres par catégorie et fourchette de prix, un tri sur trois champs et une pagination — le tout traité côté serveur via les paramètres de requête, sans envoyer toute la collection au client pour l’y filtrer.',
+            'Le tableau de bord réalise ses agrégations dans MongoDB plutôt que dans Node : valeur totale du stock, nombre de produits par catégorie, répartition par tranche de prix et alerte sous vingt unités. Les administrateurs disposent aussi de la gestion des utilisateurs — modification des rôles et suppression, avec suppression en cascade des produits associés et une protection empêchant un administrateur de se supprimer ou de rétrograder son propre compte.',
+          ],
+        },
+        auth: {
+          eyebrow: '02',
+          title: 'Authentification et contrôle d’accès',
+          body: [
+            'Les JWT expirent après sept jours, les mots de passe sont hachés avec bcrypt en dix tours de salage et le champ du mot de passe est exclu par défaut des requêtes au niveau du schéma, afin qu’une lecture imprudente ne puisse pas le divulguer. Les routes sont protégées des deux côtés : un middleware vérifie le jeton et rattache l’utilisateur à la requête côté serveur ; un composant ProtectedRoute protège le client, complété par un intercepteur Axios qui détecte les jetons expirés et ferme la session.',
+            'La propriété est vérifiée indépendamment du rôle. La modification ou la suppression d’un produit exige d’en être propriétaire ou administrateur — le contrôle se trouve dans le contrôleur, car la définition de route ne peut connaître le propriétaire avant d’avoir chargé l’enregistrement.',
+          ],
+        },
+        deployment: {
+          eyebrow: '03',
+          title: 'Déploiement et tests',
+          body: [
+            'Trois services : le build React sur Vercel, l’API Express sur Render et MongoDB Atlas en arrière-plan. Cette séparation concentrait l’essentiel de la difficulté : un CORS limité à une seule origine de confiance, des variables d’environnement différentes selon le contexte des deux côtés et un backend gratuit qui se met en veille après une période d’inactivité, au détriment de la première requête.',
+            'Un script de test exécute les 35 cas contre l’API en fonctionnement : inscription et connexion, CRUD complet des produits, filtres et pagination, routes d’administration et agrégations du tableau de bord. Il vérifie aussi les codes de statut des scénarios d’échec, afin qu’une réponse 401 ou 403 devenue silencieusement 200 fasse échouer le test au lieu de passer inaperçue.',
+          ],
+        },
+        changes: {
+          eyebrow: '04',
+          title: 'Ce que je changerais',
+          body: [
+            'Les images des produits sont stockées sous forme de chaînes base64 dans les documents MongoDB. Cette solution fonctionne et a simplifié le déploiement — aucun stockage objet à provisionner, aucune URL signée, aucune synchronisation — mais elle ne convient pas à une application à grande échelle : base64 augmente la taille de chaque image d’environ un tiers, les documents se rapprochent de la limite de 16 Mo et aucun CDN ne peut les mettre en cache. Le schéma conserve encore un champ image_url inutilisé, hérité de l’approche précédente.',
+            'La bonne architecture consiste à placer les images dans un stockage objet et à conserver leur clé dans le document. Je déplacerais aussi les règles de validation dans un module partagé plutôt que de les dupliquer entre les formulaires du client et les chaînes express-validator, qui peuvent diverger sans signalement.',
+          ],
+        },
+      },
+      images: [
+        { caption: 'LISTE DES PRODUITS AVEC RECHERCHE, FILTRES PAR CATÉGORIE ET PRIX, VUE ADMINISTRATEUR' },
+        { caption: 'TABLEAU DE BORD — VALEUR DU STOCK, RÉPARTITION PAR CATÉGORIE, TRANCHES DE PRIX ET ALERTES DE STOCK FAIBLE' },
+        { caption: 'BACKEND SUR RENDER — JOURNAL DES REQUÊTES EN DIRECT VERS L’API DÉPLOYÉE' },
+      ],
+    },
+  },
+}

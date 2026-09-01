@@ -1,0 +1,340 @@
+export default {
+  meta: { title: 'Portfolio' },
+  brand: { mark: 'AL' },
+  accessibility: { skipToContent: 'Skip to content' },
+  nav: {
+    logo: 'Portfolio home',
+    home: 'Home',
+    experience: 'Experience',
+    projects: 'Projects',
+    about: 'About',
+    contact: 'Contact',
+    openMenu: 'Open navigation menu',
+    closeMenu: 'Close navigation menu',
+    primary: 'Primary navigation',
+  },
+  theme: { switchToDark: 'Switch to dark theme', switchToLight: 'Switch to light theme' },
+  language: { label: 'Choose language', english: 'English', french: 'French', englishShort: 'EN', frenchShort: 'FR' },
+  footer: { name: 'AL', copyright: '{year} · Built with care and curiosity.' },
+  home: {
+    label: 'DATA ENGINEERING · RABAT, MOROCCO',
+    name: 'Alae Laita',
+    lede: 'Final-year data engineering student at INPT Rabat. I build the layer between raw data and something a person can actually decide with — pipelines, models, and the interfaces that make either one legible.',
+    ctaProjects: 'See the work',
+    ctaContact: 'Get in touch',
+    selectedWork: 'SELECTED WORK',
+    allProjects: 'ALL PROJECTS',
+  },
+  experience: {
+    eyebrow: 'EXPERIENCE',
+    title: 'Experience',
+    lightbox: { close: 'Close image' },
+    entries: {
+      pfe: {
+        dates: 'MAR — AUG 2026',
+        location: 'CASABLANCA, MOROCCO',
+        role: 'End-of-studies project',
+        org: 'DA TECHNOLOGIES — AKWA GROUP / AFRIQUIA GAZ',
+        body: [
+          {
+            lead: 'Six months building a station profiling system for Afriquia Gaz across 660 service stations.',
+            rest: ' The core was a dual-pipeline K-Means clustering architecture in PySpark, running two parallel treatments of the same transaction data — one deleting outliers, one winsorizing them — because the choice of treatment changed which segments the model could see at all. The industrial and fleet segment, Stations Spécialisées, only survived under winsorization; deleting outliers erased it.',
+          },
+          {
+            lead: 'Seasonality was modelled separately, then used as a second basis for clustering.',
+            rest: ' I fit OLS regressions per station using Fourier terms for annual cycles and explicit encoding of Hijri calendar holidays, then clustered stations again on their calendar response — separating stations that move with Ramadan and Aïd from those that do not. I also built and delivered a SARIMAX(1,1,1) model forecasting weekly tonnage for Afriquia Gaz depositaires.',
+          },
+          {
+            lead: 'The analysis reached the business as Tableau dashboards.',
+            rest: ' An operational overview, a custom-formatted view, and a segmentation-rules page setting out the thresholds behind each segment, the station-type breakdown, transaction types, and six years of history per segment.',
+          },
+          {
+            lead: 'The second half of the project generalised the work into Profiling.ai, a multi-tenant profiling-as-a-service platform.',
+            rest: ' React and Vite on the front, Node and Express behind it, a Python clustering engine underneath, with Afriquia Gaz as its first client. Clients import their own data, run a guided elbow and silhouette analysis to choose k rather than guessing at it, configure preprocessing against per-feature skewness diagnostics, and keep a persistent history of every run. Porting the notebook methodology into the platform is what made the difference: the original pipeline scaled features and nothing else, and put 81.5% of records into a single cluster. Winsorization at P98, log transformation and feature weighting fixed it.',
+          },
+        ],
+        tech: ['PySpark', 'Python', 'scikit-learn', 'K-Means', 'SARIMAX', 'OLS', 'Tableau', 'React', 'Node.js', 'Express', 'PostgreSQL', 'SQL'],
+        images: {
+          groups: {
+            tableau: 'TABLEAU — SEGMENTATION DELIVERY',
+            platform: 'PROFILING.AI — THE PLATFORM',
+          },
+          items: {
+            rules: { caption: 'SEGMENTATION RULES — THRESHOLDS, STATION TYPE, TRANSACTION TYPE AND SIX-YEAR HISTORY PER SEGMENT' },
+            stations: { caption: 'STATION SEGMENTATION DASHBOARD — 561 STATIONS, FOUR SEGMENTS' },
+            gaz: { caption: 'GAS PDV SEGMENTATION — 69,741 POINTS OF SALE, SIX SEGMENTS' },
+            platformDashboard: { caption: 'GLOBAL DASHBOARD — SEGMENT DISTRIBUTION AND KPIS FOR AN IMPORTED DATASET' },
+            platformImport: { caption: 'MULTI-SOURCE IMPORT — FILE, POSTGRESQL OR DATABRICKS' },
+            platformHistory: { caption: 'RUN HISTORY — EVERY CLUSTERING RUN SAVED WITH ITS K, SILHOUETTE AND FEATURE SET' },
+          },
+        },
+      },
+      ministry: {
+        dates: 'INTERNSHIP',
+        location: 'MOROCCO',
+        role: 'Data science internship',
+        org: 'MINISTÈRE DU TRANSPORT ET DE LA LOGISTIQUE',
+        body: [
+          'Exploration, cleaning and structuring of datasets drawn from several departments, then building and evaluating machine learning models to anticipate business closures.',
+          'Most of the gain came from the unglamorous half: improving dataset quality and running hyperparameter optimisation until the models held steady across evaluations rather than only on a lucky split.',
+        ],
+      },
+      aeinpt: {
+        dates: '2022',
+        location: 'INPT RABAT',
+        role: 'Vice-President, then President',
+        org: 'AEINPT — STUDENT ASSOCIATION OF INPT',
+        body: [
+          'Led student initiatives and coordinated teams across departments.',
+          'Organised the Olympiade INPT, an event with more than 6000 participants, covering technical coordination, logistics and communication.',
+        ],
+      },
+    },
+  },
+  projectIndex: {
+    eyebrow: 'PROJECTS',
+    title: 'Projects',
+    lede: 'Selected work across data engineering, machine learning and the interfaces that make both usable.',
+  },
+  projectDetail: {
+    eyebrow: 'PROJECT',
+    back: '← ALL PROJECTS',
+    closeImage: 'Close image',
+    liveDemo: 'SEE LIVE DEMO',
+    openLiveDemo: 'Open live demo',
+    source: 'SOURCE',
+  },
+  about: {
+    eyebrow: 'ABOUT',
+    title: 'About',
+    bio: [
+      "I'm a final-year data engineering student at INPT in Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision — segmentation that a commercial team can act on, pipelines that run unattended, interfaces that make a model's output legible to someone who will never read the model.",
+      "I like the parts of the work that don't photograph well. Outlier treatment that determines whether a whole segment exists or vanishes. Test coverage that fails a DAG before bad rows reach anyone. The difference between a model that scores well once and one that holds on data it hasn't seen.",
+      "Outside of it I write fiction, which has turned out to be less separate from this than it sounds — both are mostly about noticing what's actually there rather than what you expected to find.",
+    ],
+    downloadCv: 'DOWNLOAD CV',
+    skills: {
+      eyebrow: 'WORKING WITH',
+      title: 'Skills',
+      spokenEyebrow: 'SPOKEN',
+      spokenLanguages: ['Arabic', 'French', 'English'],
+      groups: {
+        pipelines: 'CODE & PROCESSING',
+        modelling: 'MODELLING',
+        storage: 'STORAGE',
+        interfaces: 'INTERFACES & TOOLING',
+      },
+    },
+  },
+  contact: {
+    eyebrow: 'CONTACT',
+    title: 'Contact',
+    lede: 'For opportunities, collaborations or a conversation about the work.',
+    links: [
+      { label: 'EMAIL', value: 'laita.alae@gmail.com', href: 'mailto:laita.alae@gmail.com', external: false },
+      { label: 'GITHUB', value: 'github.com/l-alae', href: 'https://github.com/l-alae', external: true },
+      { label: 'LINKEDIN', value: 'linkedin.com/in/alae-laita-623b0818b', href: 'https://linkedin.com/in/alae-laita-623b0818b', external: true },
+    ],
+  },
+  pages: {
+    home: { eyebrow: 'Introduction', title: 'Home', placeholder: 'Content coming soon.' },
+    experience: { eyebrow: 'Selected work', title: 'Experience', placeholder: 'Experience content coming soon.' },
+    projects: { eyebrow: 'Case studies', title: 'Projects', placeholder: 'Project content coming soon.' },
+    projectDetail: { eyebrow: 'Project detail', placeholder: 'Project details coming soon.' },
+    about: { eyebrow: 'Profile', title: 'About', placeholder: 'About content coming soon.' },
+    contact: { eyebrow: 'Get in touch', title: 'Contact', placeholder: 'Contact content coming soon.' },
+    notFound: { eyebrow: 'Error 404', title: 'Page not found', placeholder: 'The requested page could not be found.' },
+  },
+  projects: {
+    status: { inProgress: 'IN PROGRESS' },
+    capitalBikeshare: {
+      title: 'Capital Bikeshare — Station Segmentation',
+      blurb: 'Five interpretable station types derived from usage alone across 589 stations and 15.4M trips, holding 81.5% stability on unseen data.',
+      lede: 'Every docked Capital Bikeshare station in Washington DC, grouped by how it is actually used, from 15.4 million trips — with the clustering running live in the browser so you can change the model and watch the map respond.',
+      stats: [
+        { label: 'STATIONS', value: '589' },
+        { label: 'TRIPS', value: '15,361,854' },
+        { label: 'WINDOW', value: '2022-01 → 2026-07' },
+        { label: 'FIT / HOLDOUT', value: '2025-07 / 2025-08–2026-07' },
+        { label: 'HOLDOUT STABILITY', value: '81.5%' },
+      ],
+      tech: ['Python', 'pandas', 'scikit-learn', 'K-Means', 'PCA', 'statsmodels', 'React', 'Vite', 'Leaflet', 'Recharts', 'Web Workers'],
+      table: {
+        label: 'Capital Bikeshare cluster summary',
+        columns: {
+          cluster: 'Cluster',
+          stations: 'Stations',
+          memberShare: 'Member share',
+          weekdayPeak: 'Weekday peak',
+          medianTrips: 'Median trips',
+        },
+        rows: [
+          { cluster: 'Commuter origin', stations: '204', memberShare: '61%', weekdayPeak: 'departures 08:00', medianTrips: '10,466' },
+          { cluster: 'Dense residential core', stations: '132', memberShare: '67%', weekdayPeak: 'departures 18:00', medianTrips: '73,745' },
+          { cluster: 'Employment destination', stations: '118', memberShare: '63%', weekdayPeak: 'arrivals 08:00', medianTrips: '43,434' },
+          { cluster: 'Peripheral recreational', stations: '89', memberShare: '41%', weekdayPeak: 'departures 17:00', medianTrips: '2,232' },
+          { cluster: 'Monumental leisure', stations: '46', memberShare: '39%', weekdayPeak: 'departures 17:00', medianTrips: '48,746' },
+        ],
+      },
+      images: {
+        header: { caption: 'HEADER AND MAP — 589 STATIONS, 15,361,854 TRIPS, JANUARY 2022 TO JULY 2026' },
+        controls: { caption: 'MOVE THE K SLIDER OR SWITCH OFF A FEATURE BLOCK AND K-MEANS REFITS IN THE BROWSER, ON ALL 589 STATIONS IN 90 DIMENSIONS' },
+        clusters: { caption: 'THE FIVE STATION TYPES AND THEIR DAILY TRIP VOLUMES. THE DASHED LINE MARKS THE AUGUST 2025 RECORDING CHANGE' },
+        drawer: { caption: 'SELECTING A STATION LAZY-LOADS ITS DETAIL. STATIONS BELOW ~5,000 TRIPS CARRY A VISIBLE NOISE WARNING' },
+        mobile: { caption: 'BELOW 640PX THE PANELS COLLAPSE TO A SINGLE COLUMN AND THE ANALYSIS VIEWS MOVE INTO A TAB BAR' },
+      },
+      sections: {
+        findings: {
+          eyebrow: '01',
+          title: 'Findings',
+          intro: ['Five interpretable station types emerge from usage alone. No geography, land use or station metadata went into the model — only the hour-by-hour shape of departures and arrivals, the weekend and member mix, and seasonality.'],
+          body: [
+            'Two of those clusters are separated by the phase of their daily profile rather than by their mix. Commuter origin peaks on departures at 08:00; Employment destination peaks on arrivals at 08:00. Their member shares are near-identical — 61% and 63% — so what distinguishes them is when the peak falls, which is exactly the residential-versus-workplace distinction, recovered without the model being told where anything is. The clusters land where you would expect on the map: Monumental leisure picks out the National Mall and the waterfront, Dense residential core the row-house neighbourhoods north of downtown.',
+            "The model holds at 81.5% on held-out data. It was fit on 2022-01 to 2025-07 and then applied unchanged — frozen centroids, no refitting — to the following twelve months. 480 of 589 stations kept their cluster. That figure is a lower bound: the holdout window is only twelve months, so its seasonal block could not be detrended the way the fit window's was, and some of the 109 disagreements are measurement rather than behaviour.",
+          ],
+        },
+        recording: {
+          eyebrow: '02',
+          title: 'A recording change, detected rather than clustered through',
+          body: [
+            'Trip counts jump in August 2025 for a reason that has nothing to do with demand. Rather than let it distort the features, the ingest step diagnoses it.',
+            'Trips with no station at either end fell 71% in a single month, from 142,110 to 41,130, while station-attributed trips rose 13% in a month when total volume fell 9.4% — within normal seasonal variation. The fleet mix is unchanged either side. Member share moves in opposite directions on the two sides, which season cannot cause. 19 of the 20 top stations gain against a year-on-year control.',
+            'The conclusion is that the operator began attributing dockless e-bike trips to nearby stations. It is a change in recording, not in riding. The fit window therefore stops at 2025-07 so the model trains on a single regime, and the post-break months become the holdout. Pre-break counts are not rescaled to match — that would fabricate station-level attributions the data does not contain.',
+          ],
+        },
+        method: {
+          eyebrow: '03',
+          title: 'Method',
+          body: [
+            'The work splits across a boundary that is deliberate rather than incidental.',
+            'Offline, in Python, sits everything expensive or that must be pinned: ingesting and cleaning 24.2M raw rows down to 15.4M usable trips, building a 90-dimensional feature matrix per station — 24 weekday-departure hours, 24 weekday-arrival, 24 weekend-departure, 12 seasonal, 6 mix-and-volume — z-scoring on fit-window statistics only, PCA, and a k-sweep from k=2 to 10.',
+            'Live, in the browser, sits everything a viewer might want to interrogate: k-means itself, refit on every slider move and every feature-block toggle, in around 300ms across 589 stations.',
+            'The boundary sits there because the two sides have different constraints. The features are a twenty-minute pass over 15.4M trips and must be identical for everyone, so they ship as precomputed JSON. The clustering is cheap, and its result is exactly what a reviewer would want to poke at — "what if seasonality didn\'t count?" is a question the dashboard answers in 300ms rather than one you have to take on faith.',
+            "Two things stay fixed on purpose. The PCA projection is computed once and never recomputed, so points never jump: the scatter is a stable map of station-space that clusterings get painted onto. And at the reference configuration — k=5, all blocks on — the displayed labels come from the offline scikit-learn fit, because every published figure was computed against it. The browser's own fit still runs there, so the live inertia and silhouette remain honest comparisons.",
+            "Below 640px the panels collapse to a single column and the four analysis views move into a tab bar, so the page stays a few screens rather than ten. The Leaflet map keeps a single DOM position across every breakpoint — CSS handles the reordering — because remounting it on a viewport change tears the map down underneath Leaflet's own in-flight callbacks.",
+          ],
+        },
+        limitations: {
+          eyebrow: '04',
+          title: 'Limitations',
+          body: [
+            'Silhouette sits below 0.19 at every k, peaking at 0.1845 for k=2 and falling to around 0.06 from k=4 upward. The metric cannot discriminate here. k=5 comes from the inertia elbow — marginal improvement falls below 4% per step at k=5 — and from interpretability: five is where each cluster is distinguished by a different feature block rather than by a finer cut of the same one. It is not a metric optimum and is not presented as one.',
+            'The first ten principal components explain 58.8% of variance, with PC1 at 16.7% and PC2 at 11.2%. Station behaviour is a continuum, not five separated groups. The scatter plot is a partial projection: two points sitting on top of each other there may differ sharply across the eighty-odd dimensions the view discards. The clustering itself runs in all 90 dimensions, never on the 2D coordinates.',
+            'Low-volume stations are noisy. Below roughly 5,000 trips a row-normalised 24-hour profile is mostly sampling noise. The five largest-norm stations in the feature matrix are all small peripheral ones — that is normalisation noise rather than distinctive behaviour, and the station drawer says so instead of presenting it as insight.',
+            'Data-quality issues are reported, not silently repaired. 514 stations show a coordinate spread over 500m, though only 7 have a p99 also beyond it and the rest are single stray GPS fixes. 92 station IDs map to more than one name, and 7 names map to more than one ID. These print as tables for a human to adjudicate.',
+          ],
+        },
+        attribution: {
+          eyebrow: '05',
+          title: 'Data and attribution',
+          body: [
+            "Trip data: Capital Bikeshare system data, used under the Capital Bikeshare Data License Agreement. Monthly archives are fetched from the operator's public S3 bucket; no filenames are hardcoded — the bucket's XML index is parsed and filtered.",
+            'Basemap tiles: © Esri — Esri, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community.',
+            'This project is not affiliated with or endorsed by Capital Bikeshare or Lyft.',
+          ],
+        },
+      },
+    },
+    eltPipeline: {
+      title: 'ELT Pipeline — Film Data',
+      blurb: 'Postgres to Postgres extraction with dbt transformations on top, orchestrated end to end by an Airflow DAG.',
+      tech: ['Airflow', 'dbt', 'PostgreSQL', 'Docker'],
+      meta: [
+        { label: 'STACK', value: 'Airflow · dbt · PostgreSQL · Docker' },
+        { label: 'SHAPE', value: 'Postgres → Postgres' },
+        { label: 'ROLE', value: 'Solo' },
+      ],
+      body: [
+        'A containerised ELT pipeline moving film data from a source PostgreSQL instance to a destination instance, with the transformation layer built in dbt and the whole thing orchestrated by a single Airflow DAG.',
+        'Extraction and loading run through a Python script invoked as the first task. dbt then builds the models on top of the loaded tables, including a query output joining each film to its rating category and actor, and one incremental model so reruns process only new rows rather than rebuilding from scratch. A dbt test task runs last and fails the DAG if any assertion breaks — twelve tests covering uniqueness, null constraints and referential integrity between films, actors and ratings.',
+        'Everything runs in Docker, so the pipeline stands up from a single compose command with no local Postgres or Airflow install.',
+      ],
+      images: [
+        { caption: 'AIRFLOW DAG — RUN_ELT_SCRIPT → DBT_RUN → DBT_TEST, ALL GREEN' },
+        { caption: 'QUERY OUTPUT — FILMS JOINED TO RATING CATEGORY AND ACTOR' },
+        { caption: 'DBT TEST RUN — 12 TESTS PASSING' },
+      ],
+    },
+    heartDisease: {
+      title: 'Heart Disease Prediction App',
+      blurb: 'Logistic regression on the UCI dataset, served through a dockerised Flask API behind a React front end.',
+      tech: ['React', 'Flask', 'scikit-learn', 'Docker'],
+      meta: [
+        { label: 'STACK', value: 'React · Flask · scikit-learn · Docker' },
+        { label: 'DATA', value: 'UCI heart disease dataset' },
+        { label: 'MODEL', value: 'Logistic regression' },
+        { label: 'ROLE', value: 'Solo' },
+      ],
+      body: [
+        'A logistic regression model trained on the UCI heart disease dataset, served as a prediction API and wrapped in a front end that a non-technical user can actually operate.',
+        'The model is trained in scikit-learn and persisted, then loaded by a Flask API exposing a single prediction endpoint. A React front end collects the clinical inputs, posts them, and renders the returned probability. Both services are dockerised and composed together with PostgreSQL for storing submitted cases.',
+        'The point was less the model — logistic regression on a small tabular dataset is not hard — than the full path from a trained artifact to something reachable through a browser.',
+      ],
+      images: [{ caption: 'PREDICTION INTERFACE' }],
+    },
+    powerbi: {
+      title: 'Power BI',
+      blurb: 'Project details coming soon.',
+      tech: [],
+      meta: [{ label: 'STATUS', value: 'In progress' }],
+      body: ['This project is still in progress. The write-up will follow.'],
+      images: [],
+    },
+    markethub: {
+      title: 'MarketHub — Full-Stack Marketplace',
+      blurb: 'A product marketplace with authentication, role-based access and an admin panel, deployed across Vercel, Render and MongoDB Atlas.',
+      lede: 'A product marketplace with authentication, role-based access and an admin panel — built for a web development and security module, and deployed across three services rather than left on localhost.',
+      tech: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'JWT', 'TailwindCSS', 'Chart.js'],
+      meta: [
+        { label: 'ENDPOINTS', value: '14' },
+        { label: 'TESTS', value: '35 passing' },
+        { label: 'DEPLOYMENT', value: 'Vercel · Render · Atlas (API retired)' },
+        { label: 'CONTEXT', value: 'Coursework, INPT' },
+      ],
+      liveLabel: 'SEE THE INTERFACE',
+      notice: {
+        label: 'FRONTEND ONLY',
+        body: 'The interface is live but the API behind it is not — the free-tier backend was retired after the module ended, so login and product data will not load. The repository has everything needed to run it locally.',
+      },
+      sections: {
+        whatItDoes: {
+          eyebrow: '01',
+          title: 'What it does',
+          body: [
+            "Users register, log in and manage their own product listings; admins manage everyone's. Products carry an image, a category, a price and stock, and the listing page supports full-text search across name and description, category and price-range filters, sorting on three fields, and pagination — all resolved server-side through query parameters rather than by shipping the whole collection to the client and filtering there.",
+            "The dashboard aggregates in MongoDB rather than in Node: total inventory value, product counts per category, price-band distribution, and a low-stock alert below twenty units. Admins additionally get user management — role changes and deletion, with the delete cascading to that user's products and a guard preventing an admin from deleting or demoting themselves.",
+          ],
+        },
+        auth: {
+          eyebrow: '02',
+          title: 'Auth and access control',
+          body: [
+            'JWT with a seven-day expiry, passwords hashed with bcrypt at ten salt rounds, and the password field excluded from queries by default at the schema level so it cannot leak through a careless find. Route protection runs on both sides: a middleware that verifies the token and attaches the user on the server, and a ProtectedRoute wrapper on the client, with an Axios interceptor that catches expired tokens and clears the session.',
+            'Ownership is checked separately from role. Updating or deleting a product requires being its owner or an admin — the check sits in the controller, not in the route definition, because the route cannot know who owns the record until it has been fetched.',
+          ],
+        },
+        deployment: {
+          eyebrow: '03',
+          title: 'Deployment and tests',
+          body: [
+            'Three services: the React build on Vercel, the Express API on Render, MongoDB Atlas behind it. That split is where most of the actual difficulty lived — CORS scoped to a single trusted origin, environment variables that differ per environment on both sides, and a free-tier backend that cold-starts after inactivity and takes the first request with it.',
+            'A test script exercises all 35 cases against the running API: registration and login, the full product CRUD, filtering and pagination, the admin routes, and the dashboard aggregation — asserting status codes on the failure paths too, so a 401 or a 403 that quietly became a 200 would fail the run rather than pass unnoticed.',
+          ],
+        },
+        changes: {
+          eyebrow: '04',
+          title: 'What I would change',
+          body: [
+            'Product images are stored as base64 strings inside the MongoDB documents. It works and it made deployment simple — no object storage to provision, no signed URLs, nothing to keep in sync — but it is the wrong call at any real scale: base64 inflates each image by about a third, documents march toward the 16MB limit, and nothing can be cached at a CDN. The schema still carries an unused image_url field from the earlier approach.',
+            'The right shape is object storage with the key on the document. I would also move validation rules into a shared module rather than duplicating them across the client forms and the express-validator chains, where the two can drift apart silently.',
+          ],
+        },
+      },
+      images: [
+        { caption: 'PRODUCT LIST WITH SEARCH, CATEGORY AND PRICE FILTERS, ADMIN VIEW' },
+        { caption: 'DASHBOARD — INVENTORY VALUE, CATEGORY DISTRIBUTION, PRICE BANDS AND LOW-STOCK ALERTS' },
+        { caption: 'BACKEND ON RENDER — LIVE REQUEST LOG AGAINST THE DEPLOYED API' },
+      ],
+    },
+  },
+}
