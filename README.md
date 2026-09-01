@@ -40,7 +40,7 @@ npm install
 npm run dev
 ```
 
-The development server uses the `/portfolio_v2/` base path. Open [http://localhost:5173/portfolio_v2/](http://localhost:5173/portfolio_v2/) rather than the server root.
+The site uses the root base path for its custom domain. During development, open [http://localhost:5173/](http://localhost:5173/).
 
 ## Build and deploy
 
