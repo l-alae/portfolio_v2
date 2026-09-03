@@ -24,7 +24,10 @@ export default function Header() {
     <header className="site-header">
       <div className="header-bar container">
         <div className="header-primary">
-          <Link className="logo" to="/" aria-label={t('nav.logo')}>{t('brand.mark')}</Link>
+          <Link className="logo" to="/" aria-label={t('nav.logo')}>
+            <span className="logo-full">{t('brand.name')}</span>
+            <span className="logo-short">{t('brand.shortName')}</span>
+          </Link>
           <Nav className="desktop-nav" />
         </div>
         <div className="header-actions">

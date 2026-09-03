@@ -1,6 +1,6 @@
 export default {
   meta: { title: 'Portfolio' },
-  brand: { mark: 'AL' },
+  brand: { name: 'Alae Laita', shortName: 'Laita' },
   accessibility: { skipToContent: 'Aller au contenu' },
   nav: {
     logo: 'Accueil du portfolio',
@@ -15,7 +15,19 @@ export default {
   },
   theme: { switchToDark: 'Activer le thème sombre', switchToLight: 'Activer le thème clair' },
   language: { label: 'Choisir la langue', english: 'Anglais', french: 'Français', englishShort: 'EN', frenchShort: 'FR' },
-  footer: { name: 'AL', copyright: '{year} · Conçu avec soin et curiosité.' },
+  footer: {
+    name: 'Alae Laita',
+    discipline: 'DATA ENGINEERING · MAROC',
+    elsewhere: 'AILLEURS',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/l-alae', external: true },
+      { label: 'LinkedIn', href: 'https://linkedin.com/in/alae-laita-623b0818b', external: true },
+      { label: 'Email', href: 'mailto:laita.alae@gmail.com', external: false },
+    ],
+    elsewhereIm: 'AILLEURS JE SUIS',
+    handle: 'nocturnalae',
+    source: 'SOURCE',
+  },
   home: {
     label: 'INGÉNIERIE DES DONNÉES · RABAT, MAROC',
     name: 'Alae Laita',
