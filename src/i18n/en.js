@@ -27,9 +27,9 @@ export default {
     source: 'SOURCE',
   },
   home: {
-    label: 'DATA ENGINEERING · RABAT, MOROCCO',
+    label: 'DATA ENGINEERING & ANALYTICS · MOROCCO',
     name: 'Alae Laita',
-    lede: 'Final-year data engineering student at INPT Rabat. I build the layer between raw data and something a person can actually decide with — pipelines, models, and the interfaces that make either one legible.',
+    lede: 'Data engineer out of the Institut National des Postes et Télécommunications (INPT) in Rabat. I take data from where it lands to where someone can read it and act on it: pipelines, models, dashboards. Open to full-time roles and freelance work.',
     ctaProjects: 'See the work',
     ctaContact: 'Get in touch',
     selectedWork: 'SELECTED WORK',
@@ -119,9 +119,11 @@ export default {
     title: 'About',
     photoAlt: 'Alae Laita',
     bio: [
-      "I'm a final-year data engineering student at INPT in Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision — segmentation that a commercial team can act on, pipelines that run unattended, interfaces that make a model's output legible to someone who will never read the model.",
-      "I like the parts of the work that don't photograph well. Outlier treatment that determines whether a whole segment exists or vanishes. Test coverage that fails a DAG before bad rows reach anyone. The difference between a model that scores well once and one that holds on data it hasn't seen.",
-      "Outside of it I write fiction, which has turned out to be less separate from this than it sounds — both are mostly about noticing what's actually there rather than what you expected to find.",
+      ["I'm a data engineer out of ", { text: 'INPT', href: 'http://inpt.ac.ma/' }, " Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision. Segmentation a commercial team can act on. Pipelines that run unattended. Dashboards that make a model's output legible to someone who will never read the model."],
+      "I like the parts of the work that don't photograph well. The outlier treatment that decides whether a whole segment exists or vanishes. The test that fails a DAG before bad rows reach anyone. The gap between a model that scores well once and one that holds on data it hasn't seen.",
+      "I work in Python, SQL, Spark, Tableau and Power BI. I'm looking for a full-time data engineering or analytics role, and I take freelance work in the meantime.",
+      "Outside the work I read — Dostoevsky and Plath and whatever I can get in three languages — and I write fiction and fragments, badly and consistently. I think in English, argue in French, and swear in Darija. Maths came first and still does.",
+      "Prépa was the last time anything held my attention the way a proof does, and most of what I've learned since I've learned the same way: on my own and at night, because I wanted to.",
     ],
     downloadCv: 'DOWNLOAD CV',
     skills: {

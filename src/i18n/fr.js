@@ -27,9 +27,9 @@ export default {
     source: 'SOURCE',
   },
   home: {
-    label: 'INGÉNIERIE DES DONNÉES · RABAT, MAROC',
+    label: 'DATA ENGINEERING & ANALYTICS · MAROC',
     name: 'Alae Laita',
-    lede: 'Étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. Je travaille sur le clustering, les pipelines et tout ce qui, loin des projecteurs, rend les données réellement exploitables — des modèles de segmentation qui restent fiables sur des données inédites et une orchestration qui tourne sans surveillance.',
+    lede: "Ingénieur data issu de l'Institut National des Postes et Télécommunications (INPT) à Rabat. Je prends la donnée là où elle atterrit et je l'amène là où quelqu'un peut la lire et agir : pipelines, modèles, dashboards. Ouvert aux postes à temps plein comme aux missions freelance.",
     ctaProjects: 'Voir les projets',
     ctaContact: 'Me contacter',
     selectedWork: 'PROJETS SÉLECTIONNÉS',
@@ -119,9 +119,11 @@ export default {
     title: 'À propos',
     photoAlt: 'Alae Laita',
     bio: [
-      'Je suis étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. La plupart de mes projets se situent à l’endroit où la donnée cesse d’être un tableau pour devenir une décision : une segmentation exploitable par une équipe commerciale, des pipelines qui tournent sans surveillance et des interfaces qui rendent les résultats d’un modèle compréhensibles sans avoir à lire le modèle.',
-      'J’aime les aspects du travail qui se prêtent mal aux photos. Le traitement des valeurs aberrantes qui décide si un segment entier apparaît ou disparaît. Des tests qui interrompent un DAG avant que des données erronées n’atteignent leurs utilisateurs. La différence entre un modèle performant une fois et un modèle qui tient sur des données qu’il n’a jamais vues.',
-      'En dehors de la data, j’écris de la fiction. Ces deux activités sont finalement moins éloignées qu’elles n’en ont l’air : toutes deux consistent surtout à regarder ce qui est réellement là, plutôt que ce que l’on s’attendait à trouver.',
+      ["Je suis ingénieur data, issu de l'", { text: 'INPT', href: 'http://inpt.ac.ma/' }, " à Rabat. L'essentiel de ce que j'ai construit se situe au point où la donnée cesse d'être un tableau et devient une décision. Une segmentation sur laquelle une équipe commerciale peut agir. Des pipelines qui tournent sans surveillance. Des dashboards qui rendent la sortie d'un modèle lisible pour quelqu'un qui ne lira jamais le modèle."],
+      "J'aime les parties du travail qui ne se photographient pas bien. Le traitement des valeurs aberrantes qui décide si tout un segment existe ou disparaît. Le test qui fait échouer un DAG avant que des lignes erronées n'atteignent qui que ce soit. L'écart entre un modèle qui obtient un bon score une fois et un modèle qui tient sur des données qu'il n'a jamais vues.",
+      "Je travaille en Python, SQL, Spark, Tableau et Power BI. Je cherche un poste à temps plein en data engineering ou en analytics, et je prends des missions freelance en attendant.",
+      "En dehors du travail je lis — Dostoïevski, Plath, et tout ce que je peux trouver en trois langues — et j'écris de la fiction et des fragments, mal et régulièrement. Je pense en anglais, je discute en français, et je jure en darija. Les mathématiques sont venues en premier et le restent.",
+      "La prépa a été la dernière fois que quelque chose a retenu mon attention comme le fait une démonstration, et l'essentiel de ce que j'ai appris depuis, je l'ai appris de la même façon : seul et la nuit, parce que j'en avais envie.",
     ],
     downloadCv: 'TÉLÉCHARGER LE CV',
     skills: {
