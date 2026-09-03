@@ -123,8 +123,7 @@ export default {
       ["I'm a data engineer out of ", { text: 'INPT', href: 'http://inpt.ac.ma/' }, " Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision. Segmentation a commercial team can act on. Pipelines that run unattended. Dashboards that make a model's output legible to someone who will never read the model."],
       "I like the parts of the work that don't photograph well. The outlier treatment that decides whether a whole segment exists or vanishes. The test that fails a DAG before bad rows reach anyone. The gap between a model that scores well once and one that holds on data it hasn't seen.",
       "I work in Python, SQL, Spark, Tableau and Power BI. I'm looking for a full-time data engineering or analytics role, and I take freelance work in the meantime.",
-      "Outside the work I read — Dostoevsky and Plath and whatever I can get in three languages — and I write fiction and fragments, badly and consistently. I think in English, argue in French, and swear in Darija. Maths came first and still does.",
-      "Prépa was the last time anything held my attention the way a proof does, and most of what I've learned since I've learned the same way: on my own and at night, because I wanted to.",
+      "Outside the work I read — Dostoevsky and Plath and whatever I can get in three languages — and I write fiction and fragments, badly and consistently. I think in English, argue in French, and swear in Darija. Maths came first and still does. Prépa was the last time anything held my attention the way a proof does, and most of what I've learned since I've learned the same way: on my own and at night, because I wanted to.",
     ],
     downloadCv: 'DOWNLOAD CV',
     skills: {

@@ -43,16 +43,13 @@ export default function About() {
               )}
             </div>
             <div className="about-bio">
-              <RichText value={bio.slice(0, 2)} />
+              <RichText value={bio} />
               {CV_AVAILABLE && (
                 <a className="cv-link" href={`${import.meta.env.BASE_URL}cv/alae-laita-cv.pdf`} download>
                   {t('about.downloadCv')}
                 </a>
               )}
             </div>
-          </div>
-          <div className="about-bio about-bio-continuation">
-            <RichText value={bio.slice(2)} />
           </div>
           <section className="spoken-languages" aria-labelledby="spoken-languages-title">
             <h2 id="spoken-languages-title">{t('about.skills.spokenEyebrow')}</h2>
