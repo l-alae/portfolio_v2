@@ -892,6 +892,7 @@ Source: `src/i18n/en.js` → `about`
 {
   "eyebrow": "ABOUT",
   "title": "About",
+  "photoAlt": "Alae Laita",
   "bio": [
     "I'm a final-year data engineering student at INPT in Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision — segmentation that a commercial team can act on, pipelines that run unattended, interfaces that make a model's output legible to someone who will never read the model.",
     "I like the parts of the work that don't photograph well. Outlier treatment that determines whether a whole segment exists or vanishes. Test coverage that fails a DAG before bad rows reach anyone. The difference between a model that scores well once and one that holds on data it hasn't seen.",
@@ -925,6 +926,7 @@ Source: `src/i18n/fr.js` → `about`
 {
   "eyebrow": "À PROPOS",
   "title": "À propos",
+  "photoAlt": "Alae Laita",
   "bio": [
     "Je suis étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. La plupart de mes projets se situent à l’endroit où la donnée cesse d’être un tableau pour devenir une décision : une segmentation exploitable par une équipe commerciale, des pipelines qui tournent sans surveillance et des interfaces qui rendent les résultats d’un modèle compréhensibles sans avoir à lire le modèle.",
     "J’aime les aspects du travail qui se prêtent mal aux photos. Le traitement des valeurs aberrantes qui décide si un segment entier apparaît ou disparaît. Des tests qui interrompent un DAG avant que des données erronées n’atteignent leurs utilisateurs. La différence entre un modèle performant une fois et un modèle qui tient sur des données qu’il n’a jamais vues.",

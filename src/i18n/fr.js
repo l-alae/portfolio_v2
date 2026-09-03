@@ -119,6 +119,7 @@ export default {
   about: {
     eyebrow: 'À PROPOS',
     title: 'À propos',
+    photoAlt: 'Alae Laita',
     bio: [
       'Je suis étudiant en dernière année d’ingénierie des données à l’INPT de Rabat. La plupart de mes projets se situent à l’endroit où la donnée cesse d’être un tableau pour devenir une décision : une segmentation exploitable par une équipe commerciale, des pipelines qui tournent sans surveillance et des interfaces qui rendent les résultats d’un modèle compréhensibles sans avoir à lire le modèle.',
       'J’aime les aspects du travail qui se prêtent mal aux photos. Le traitement des valeurs aberrantes qui décide si un segment entier apparaît ou disparaît. Des tests qui interrompent un DAG avant que des données erronées n’atteignent leurs utilisateurs. La différence entre un modèle performant une fois et un modèle qui tient sur des données qu’il n’a jamais vues.',

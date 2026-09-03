@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import RichText from '../components/RichText'
 import PageHeader from '../components/PageHeader'
 import PageTransition, { pageItemVariants } from '../components/PageTransition'
@@ -16,19 +17,36 @@ const skillGroups = [
 
 export default function About() {
   const { t } = useLanguage()
+  const [photoFailed, setPhotoFailed] = useState(false)
 
   return (
     <PageTransition>
       <section className="page about-page">
         <PageHeader eyebrow={t('about.eyebrow')} title={t('about.title')} />
         <motion.div className="about-content" variants={pageItemVariants}>
-          <div className="about-bio">
-            <RichText value={t('about.bio')} />
-            {CV_AVAILABLE && (
-              <a className="cv-link" href={`${import.meta.env.BASE_URL}cv/alae-laita-cv.pdf`} download>
-                {t('about.downloadCv')}
-              </a>
-            )}
+          <div className="about-intro">
+            <div className="about-photo">
+              {photoFailed ? (
+                <span className="image-placeholder">alae.jpg</span>
+              ) : (
+                <img
+                  src={`${import.meta.env.BASE_URL}images/alae.jpg`}
+                  alt={t('about.photoAlt')}
+                  width="800"
+                  height="1000"
+                  loading="lazy"
+                  onError={() => setPhotoFailed(true)}
+                />
+              )}
+            </div>
+            <div className="about-bio">
+              <RichText value={t('about.bio')} />
+              {CV_AVAILABLE && (
+                <a className="cv-link" href={`${import.meta.env.BASE_URL}cv/alae-laita-cv.pdf`} download>
+                  {t('about.downloadCv')}
+                </a>
+              )}
+            </div>
           </div>
           <section className="spoken-languages" aria-labelledby="spoken-languages-title">
             <h2 id="spoken-languages-title">{t('about.skills.spokenEyebrow')}</h2>

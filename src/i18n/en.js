@@ -119,6 +119,7 @@ export default {
   about: {
     eyebrow: 'ABOUT',
     title: 'About',
+    photoAlt: 'Alae Laita',
     bio: [
       "I'm a final-year data engineering student at INPT in Rabat. Most of what I've built sits at the point where data stops being a table and starts being a decision — segmentation that a commercial team can act on, pipelines that run unattended, interfaces that make a model's output legible to someone who will never read the model.",
       "I like the parts of the work that don't photograph well. Outlier treatment that determines whether a whole segment exists or vanishes. Test coverage that fails a DAG before bad rows reach anyone. The difference between a model that scores well once and one that holds on data it hasn't seen.",
