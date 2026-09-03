@@ -18,13 +18,11 @@ export default {
   footer: {
     name: 'Alae Laita',
     discipline: 'DATA ENGINEERING · MOROCCO',
-    elsewhere: 'ELSEWHERE',
     links: [
       { label: 'GitHub', href: 'https://github.com/l-alae', external: true },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/alae-laita-623b0818b', external: true },
       { label: 'Email', href: 'mailto:laita.alae@gmail.com', external: false },
     ],
-    elsewhereIm: "ELSEWHERE I'M",
     handle: 'nocturnalae',
     source: 'SOURCE',
   },

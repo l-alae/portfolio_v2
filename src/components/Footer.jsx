@@ -1,8 +1,12 @@
 import { useLanguage } from '../context/LanguageContext'
+import GithubIcon from './icons/GithubIcon'
+import LinkedInIcon from './icons/LinkedInIcon'
+import MailIcon from './icons/MailIcon'
 
 export default function Footer() {
   const { t } = useLanguage()
   const links = t('footer.links')
+  const icons = [GithubIcon, LinkedInIcon, MailIcon]
 
   return (
     <footer className="site-footer">
@@ -10,22 +14,24 @@ export default function Footer() {
         <div className="footer-columns">
           <div className="footer-identity">
             <div className="footer-name">{t('footer.name')}</div>
+            <div className="footer-icon-links">
+              {links.map((link, index) => {
+                const Icon = icons[index]
+                return (
+                  <a
+                    href={link.href}
+                    key={link.label}
+                    aria-label={link.label}
+                    {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
+                    <Icon size={18} />
+                  </a>
+                )
+              })}
+            </div>
             <div className="footer-discipline">{t('footer.discipline')}</div>
           </div>
-          <div className="footer-links">
-            <div className="footer-label">{t('footer.elsewhere')}</div>
-            {links.map((link) => (
-              <a
-                href={link.href}
-                key={link.label}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
           <div className="footer-handle">
-            <div className="footer-label">{t('footer.elsewhereIm')}</div>
             <div className="footer-handle-value">{t('footer.handle')}</div>
           </div>
         </div>

@@ -12,6 +12,7 @@
   --color-overlay: rgba(0, 0, 0, 0.85);
   --font-serif: "Fraunces", Georgia, serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
+  --font-display-mono: "Major Mono Display", "Courier New", monospace;
   --font-size-ui: 0.75rem;
   --font-size-body: 1.05rem;
   --font-size-h1: clamp(2.5rem, 6vw, 4rem);

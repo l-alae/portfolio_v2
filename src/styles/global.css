@@ -102,19 +102,24 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   color: var(--color-text); font-family: var(--font-serif); font-size: 1.1rem;
   font-variation-settings: "opsz" 20; font-weight: 500; letter-spacing: -0.01em;
 }
-.footer-discipline, .footer-label, .footer-links a, .footer-handle-value, .footer-source {
+.footer-discipline, .footer-source {
   font-family: var(--font-mono); letter-spacing: var(--tracking-ui);
 }
 .footer-discipline {
-  margin-top: var(--space-2); color: var(--color-muted); font-family: var(--font-mono);
+  margin-top: var(--space-3); color: var(--color-muted); font-family: var(--font-mono);
   font-size: 0.7rem; text-transform: uppercase;
 }
-.footer-label { margin-bottom: var(--space-3); color: var(--color-muted); font-size: 0.65rem; text-transform: uppercase; }
-.footer-links { display: flex; flex-direction: column; align-items: flex-start; }
-.footer-links a { color: var(--color-muted); font-size: 0.75rem; text-decoration: none; }
-.footer-links a + a { margin-top: var(--space-2); }
-.footer-links a:hover, .footer-source a:hover { color: var(--color-accent); }
-.footer-handle-value { color: var(--color-muted); font-size: 0.75rem; }
+.footer-icon-links { display: flex; gap: var(--space-4); margin-top: var(--space-3); }
+.footer-icon-links a {
+  display: grid; width: 1.5rem; height: 1.5rem; place-items: center;
+  color: var(--color-muted); text-decoration: none;
+}
+.footer-icon-links a:hover, .footer-source a:hover { color: var(--color-accent); }
+.footer-handle { align-self: center; }
+.footer-handle-value {
+  color: var(--color-accent); font-family: var(--font-display-mono); font-size: 1.4rem;
+  font-weight: 400; letter-spacing: 0.08em; opacity: 0.7;
+}
 .footer-source { margin-top: var(--space-7); color: var(--color-muted); font-size: 0.7rem; text-transform: uppercase; }
 .footer-source a { color: var(--color-muted); text-decoration: none; }
 @media (max-width: 29.99rem) {
@@ -430,7 +435,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 @media (min-width: 48rem) {
   .container, .main-content { padding-inline: var(--space-6); }
   .desktop-nav { display: block; }
-  .footer-columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-handle { text-align: right; }
   .menu-button, .mobile-menu { display: none; }
   .page { padding-block: var(--space-8); }
