@@ -1298,26 +1298,28 @@ Source: `src/i18n/fr.js` → `accessibility`
 }
 ```
 
-## Document metadata
+## Document titles
 
 Appears in: **Browser tab**
 
+The base title is `nocturnalae`. Page titles use their existing translated heading keys. The 404-specific tab title uses this key:
+
 #### English
 
-Source: `src/i18n/en.js` → `meta`
+Source: `src/i18n/en.js` → `pageTitles`
 
 ```json
 {
-  "title": "Portfolio"
+  "notFound": "Not found"
 }
 ```
 
 #### French
 
-Source: `src/i18n/fr.js` → `meta`
+Source: `src/i18n/fr.js` → `pageTitles`
 
 ```json
 {
-  "title": "Portfolio"
+  "notFound": "Introuvable"
 }
 ```

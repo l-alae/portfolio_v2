@@ -4,9 +4,11 @@ import ProjectCard from '../components/ProjectCard'
 import PageTransition, { pageItemVariants, staggerVariants } from '../components/PageTransition'
 import { useLanguage } from '../context/LanguageContext'
 import projects from '../data/projects'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Home() {
   const { t } = useLanguage()
+  usePageTitle()
   const featuredProjects = projects.filter((project) => project.featured)
 
   return (

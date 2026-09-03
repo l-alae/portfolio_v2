@@ -17,7 +17,6 @@ export function LanguageProvider({ children }) {
 
   useEffect(() => {
     document.documentElement.lang = lang
-    document.title = translations[lang].meta.title
     localStorage.setItem('lang', lang)
   }, [lang])
 

@@ -13,11 +13,13 @@ import GithubIcon from '../components/icons/GithubIcon'
 import { useLanguage } from '../context/LanguageContext'
 import projects from '../data/projects'
 import NotFound from './NotFound'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
   const { t } = useLanguage()
   const project = projects.find((item) => item.slug === slug)
+  usePageTitle(project ? `projects.${project.i18nKey}.title` : 'pageTitles.notFound')
   if (!project) return <NotFound />
   const key = `projects.${project.i18nKey}`
   const isCapitalBikeshare = project.i18nKey === 'capitalBikeshare'

@@ -1,5 +1,5 @@
 export default {
-  meta: { title: 'Portfolio' },
+  pageTitles: { notFound: 'Not found' },
   brand: { name: 'Alae Laita', shortName: 'Laita' },
   accessibility: { skipToContent: 'Skip to content' },
   nav: {

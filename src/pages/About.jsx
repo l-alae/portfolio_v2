@@ -4,6 +4,7 @@ import RichText from '../components/RichText'
 import PageHeader from '../components/PageHeader'
 import PageTransition, { pageItemVariants } from '../components/PageTransition'
 import { useLanguage } from '../context/LanguageContext'
+import usePageTitle from '../hooks/usePageTitle'
 
 // Flip to true once alae-laita-cv.pdf is added to public/cv/.
 const CV_AVAILABLE = false
@@ -17,6 +18,7 @@ const skillGroups = [
 
 export default function About() {
   const { t } = useLanguage()
+  usePageTitle('about.title')
   const [photoFailed, setPhotoFailed] = useState(false)
 
   return (

@@ -5,9 +5,11 @@ import RichText from '../components/RichText'
 import PageHeader from '../components/PageHeader'
 import PageTransition, { pageItemVariants } from '../components/PageTransition'
 import { useLanguage } from '../context/LanguageContext'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Experience() {
   const { t } = useLanguage()
+  usePageTitle('experience.title')
   const [activeImage, setActiveImage] = useState(null)
   const [failedImages, setFailedImages] = useState({})
   const imageTriggers = useRef({})

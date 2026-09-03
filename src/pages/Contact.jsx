@@ -2,9 +2,11 @@ import { motion } from 'framer-motion'
 import PageHeader from '../components/PageHeader'
 import PageTransition, { pageItemVariants } from '../components/PageTransition'
 import { useLanguage } from '../context/LanguageContext'
+import usePageTitle from '../hooks/usePageTitle'
 
 export default function Contact() {
   const { t } = useLanguage()
+  usePageTitle('contact.title')
   const links = t('contact.links')
 
   return (
