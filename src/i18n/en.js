@@ -43,7 +43,7 @@ export default {
       pfe: {
         dates: 'MAR — AUG 2026',
         location: 'CASABLANCA, MOROCCO',
-        role: 'End-of-studies project',
+        role: 'Station profiling and segmentation',
         org: 'DA TECHNOLOGIES — AKWA GROUP / AFRIQUIA GAZ',
         body: [
           {
