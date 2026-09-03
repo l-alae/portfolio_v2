@@ -51,6 +51,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .logo {
   margin: 0; padding: 0; color: var(--color-text); font-family: var(--font-serif); font-size: 0.95rem;
   font-variation-settings: "opsz" 18; font-weight: 500; letter-spacing: -0.015em; text-decoration: none;
+  transform: translateY(1px);
 }
 .logo:hover { color: var(--color-accent); text-decoration: none; }
 .logo-short { display: none; }
@@ -79,7 +80,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .mobile-menu .nav-list { flex-direction: column; padding-block: var(--space-5); gap: var(--space-3); }
 .mobile-menu a { display: block; padding-block: var(--space-2); }
 .main-content { position: relative; z-index: 1; flex: 1; }
-.page { max-width: var(--prose-width); padding-block: var(--space-7) var(--space-8); }
+.page { max-width: var(--prose-width); padding-block: var(--space-7) 4rem; }
 .page-header { padding-top: var(--space-3); }
 .eyebrow {
   margin-bottom: var(--space-4); color: var(--color-muted); font-family: var(--font-mono);
@@ -127,7 +128,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   .logo-full { display: none; }
   .logo-short { display: inline; }
 }
-.home-page { padding-bottom: 6rem; }
+.home-page { padding-bottom: 4rem; }
 .home-hero {
   display: flex; max-width: var(--prose-width); padding-block: var(--space-8);
   flex-direction: column; justify-content: center;
@@ -371,7 +372,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 }
 .contact-row a { width: fit-content; overflow-wrap: anywhere; font-family: var(--font-serif); font-size: 1.2rem; text-decoration: none; }
 .contact-row a:hover { color: var(--color-accent); text-decoration: underline; text-decoration-color: var(--color-accent); }
-.experience-page { max-width: none; }
+.experience-page { max-width: none; padding-bottom: 0; }
 .experience-page .page-header { max-width: var(--prose-width); }
 .experience-list { margin-top: var(--space-8); }
 .experience-entry {
@@ -439,7 +440,8 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-handle { justify-content: flex-end; text-align: right; }
   .menu-button, .mobile-menu { display: none; }
-  .page { padding-block: var(--space-8); }
+  .page { padding-block: var(--space-8) 4rem; }
+  .experience-page { padding-bottom: 0; }
   .home-hero { min-height: 70vh; padding-block: var(--space-7); }
   .experience-entry { grid-template-columns: 11.25rem minmax(0, 1fr); gap: var(--space-7); padding-block: 4rem; }
   .experience-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
