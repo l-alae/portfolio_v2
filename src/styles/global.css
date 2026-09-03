@@ -115,11 +115,12 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   color: var(--color-muted); text-decoration: none;
 }
 .footer-icon-links a:hover, .footer-source a:hover { color: var(--color-accent); }
-.footer-handle { align-self: center; }
+.footer-handle { display: flex; align-items: center; align-self: center; gap: var(--space-3); }
 .footer-handle-value {
   color: var(--color-accent); font-family: var(--font-display-mono); font-size: 1.4rem;
   font-weight: 400; letter-spacing: 0.08em; opacity: 0.7;
 }
+.footer-handle-icons { display: flex; align-items: center; gap: var(--space-2); color: var(--color-accent); opacity: 0.7; }
 .footer-source { margin-top: var(--space-7); color: var(--color-muted); font-size: 0.7rem; text-transform: uppercase; }
 .footer-source a { color: var(--color-muted); text-decoration: none; }
 @media (max-width: 29.99rem) {
@@ -436,7 +437,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   .container, .main-content { padding-inline: var(--space-6); }
   .desktop-nav { display: block; }
   .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .footer-handle { text-align: right; }
+  .footer-handle { justify-content: flex-end; text-align: right; }
   .menu-button, .mobile-menu { display: none; }
   .page { padding-block: var(--space-8); }
   .home-hero { min-height: 70vh; padding-block: var(--space-7); }

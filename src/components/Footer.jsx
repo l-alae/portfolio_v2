@@ -2,6 +2,8 @@ import { useLanguage } from '../context/LanguageContext'
 import GithubIcon from './icons/GithubIcon'
 import LinkedInIcon from './icons/LinkedInIcon'
 import MailIcon from './icons/MailIcon'
+import CrescentIcon from './icons/CrescentIcon'
+import BookIcon from './icons/BookIcon'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -33,6 +35,10 @@ export default function Footer() {
           </div>
           <div className="footer-handle">
             <div className="footer-handle-value">{t('footer.handle')}</div>
+            <div className="footer-handle-icons" aria-hidden="true">
+              <CrescentIcon size={18} />
+              <BookIcon size={18} />
+            </div>
           </div>
         </div>
         <div className="footer-source">
