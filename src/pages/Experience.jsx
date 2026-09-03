@@ -59,7 +59,14 @@ export default function Experience() {
                   <span>{t(`${key}.location`)}</span>
                 </div>
                 <div className="experience-content">
-                  <h2>{t(`${key}.role`)}</h2>
+                  {isPfe ? (
+                    <>
+                      <div className="experience-role-kicker">{t(`${key}.role`)}</div>
+                      <h2 className="experience-project-title">{t(`${key}.projectTitle`)}</h2>
+                    </>
+                  ) : (
+                    <h2>{t(`${key}.role`)}</h2>
+                  )}
                   <div className="experience-org">{t(`${key}.org`)}</div>
                   <div className="experience-copy"><RichText value={t(`${key}.body`)} /></div>
                   {isPfe && (

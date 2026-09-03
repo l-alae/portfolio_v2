@@ -43,7 +43,8 @@ export default {
       pfe: {
         dates: 'MAR — AUG 2026',
         location: 'CASABLANCA, MOROCCO',
-        role: 'Station profiling and segmentation',
+        role: 'End-of-studies internship',
+        projectTitle: 'Station profiling and segmentation',
         org: 'DA TECHNOLOGIES — AKWA GROUP / AFRIQUIA GAZ',
         body: [
           {

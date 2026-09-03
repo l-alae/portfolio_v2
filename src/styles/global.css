@@ -389,6 +389,13 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   margin: 0; font-family: var(--font-serif); font-size: 1.5rem; font-variation-settings: "opsz" 42;
   font-weight: 600; letter-spacing: -0.015em; line-height: 1.2;
 }
+.experience-role-kicker {
+  color: var(--color-muted); font-family: var(--font-mono); font-size: 0.75rem;
+  font-weight: 500; letter-spacing: var(--tracking-ui); line-height: 1.4; text-transform: uppercase;
+}
+.experience-content .experience-project-title {
+  margin-top: var(--space-2); font-size: 1.25rem; font-variation-settings: "opsz" 32;
+}
 .experience-org {
   margin-top: var(--space-2); color: var(--color-accent); font-family: var(--font-mono);
   font-size: var(--font-size-ui); font-weight: 500; letter-spacing: var(--tracking-ui); text-transform: uppercase;
