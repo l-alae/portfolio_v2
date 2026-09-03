@@ -477,9 +477,10 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 @media (min-width: 56.25rem) {
   .about-intro {
     grid-template-areas: "bio photo"; grid-template-columns: minmax(0, 62ch) 320px;
-    gap: 3rem;
+    gap: 3rem; align-items: stretch;
   }
-  .about-photo { width: 320px; }
+  .about-photo { width: 320px; height: 100%; max-height: 512px; aspect-ratio: auto; }
+  .about-photo img { object-position: center 30%; }
 }
 @media (max-width: 39.99rem) {
   .data-table-shell::after {
