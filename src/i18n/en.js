@@ -110,6 +110,8 @@ export default {
   projectDetail: {
     eyebrow: 'PROJECT',
     back: '← ALL PROJECTS',
+    headerBack: 'PROJECTS',
+    headerBackAria: 'Back to projects',
     closeImage: 'Close image',
     liveDemo: 'SEE LIVE DEMO',
     openLiveDemo: 'Open live demo',

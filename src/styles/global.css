@@ -43,6 +43,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .header-bar { display: flex; min-height: var(--header-height); align-items: center; justify-content: space-between; gap: var(--space-5); }
 .header-primary, .header-actions { display: flex; align-items: center; }
 .header-primary { min-width: 0; gap: var(--space-7); }
+.header-navigation { display: contents; }
 .header-actions { flex: none; gap: var(--space-4); }
 .nav-list a, .language-toggle, .icon-button {
   font-family: var(--font-mono); font-size: var(--font-size-ui); letter-spacing: var(--tracking-ui); text-transform: uppercase;
@@ -56,6 +57,15 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .logo:hover { color: var(--color-accent); text-decoration: none; }
 .logo-short { display: none; }
 .desktop-nav { display: none; }
+.project-header-back {
+  align-items: center; color: var(--color-muted); font-family: var(--font-mono); font-size: 0.7rem;
+  letter-spacing: var(--tracking-ui); line-height: 1.4; text-decoration: none; text-transform: uppercase;
+}
+.project-header-back:hover { color: var(--color-accent); }
+.project-header-back-arrow { display: inline-block; transition: transform 0.2s ease; }
+.project-header-back:hover .project-header-back-arrow { transform: translateX(-2px); }
+.desktop-project-back { display: none; padding-left: var(--space-5); border-left: 1px solid var(--color-border); gap: var(--space-2); }
+.mobile-project-back { display: inline-grid; width: 1.75rem; height: 1.75rem; place-items: center; font-size: 1.125rem; }
 .nav-list { display: flex; margin: 0; padding: 0; gap: var(--space-5); list-style: none; }
 .nav-list a { position: relative; color: var(--color-muted); text-decoration: none; }
 .nav-list a:hover { color: var(--color-text); }
@@ -202,9 +212,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .all-project-rows { margin-top: var(--space-8); border-bottom: 1px solid var(--color-border); }
 .all-project-rows .project-card { grid-template-columns: 7.5rem minmax(0, 1fr); }
 .project-back-link {
-  position: sticky; z-index: 10; top: calc(var(--header-height) + var(--space-2));
-  display: inline-block; margin-bottom: var(--space-7); padding-block: var(--space-1);
-  background-color: var(--color-background); color: var(--color-muted); font-family: var(--font-mono);
+  display: inline-block; margin-bottom: var(--space-7); color: var(--color-muted); font-family: var(--font-mono);
   font-size: var(--font-size-ui); letter-spacing: var(--tracking-ui); text-decoration: none; text-transform: uppercase;
 }
 .project-back-link:hover { color: var(--color-accent); }
@@ -459,12 +467,9 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .lightbox-figure img { display: block; max-width: 90vw; max-height: calc(90vh - 3rem); object-fit: contain; }
 .lightbox figcaption { max-width: 90vw; color: var(--color-surface); text-align: center; }
 @media (min-width: 48rem) {
-  .project-back-link { top: calc(var(--header-height) + var(--space-4)); }
   .container, .main-content { padding-inline: var(--space-6); }
-  .desktop-nav { display: block; }
   .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer-handle { justify-content: flex-end; text-align: right; }
-  .menu-button, .mobile-menu { display: none; }
   .page { padding-block: var(--space-8) 4rem; }
   .experience-page { padding-bottom: 0; }
   .home-hero { min-height: 70vh; padding-block: var(--space-7); }
@@ -488,6 +493,10 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   .contact-row { grid-template-columns: 10rem minmax(0, 1fr); align-items: baseline; }
 }
 @media (min-width: 56.25rem) {
+  .header-navigation { display: flex; min-width: 0; align-items: center; gap: var(--space-5); }
+  .desktop-nav { display: block; }
+  .desktop-project-back { display: inline-flex; }
+  .mobile-project-back, .menu-button, .mobile-menu { display: none; }
   .about-intro {
     grid-template-areas: "bio photo"; grid-template-columns: minmax(0, 62ch) 320px;
     gap: 3rem; align-items: stretch;
@@ -512,4 +521,5 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
   .text-link::after, .all-projects-link::after, .project-card, .project-index, .project-card-title { transition: none; }
   .pointer-glow { display: none; transition: none; }
   .skill-group li { transition: none; }
+  .project-header-back-arrow { transition: none; }
 }
