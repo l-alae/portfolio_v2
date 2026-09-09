@@ -297,6 +297,16 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .capital-attribution { padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
 .capital-attribution h2 { font-size: 1.15rem; }
 .capital-attribution .section-eyebrow, .capital-attribution .project-writeup { color: var(--color-muted); font-size: 0.85rem; }
+.olist-section { max-width: none; }
+.olist-section > .project-writeup, .olist-section > .detail-subheading, .olist-section > .data-table-shell { max-width: var(--prose-width); }
+.detail-subheading {
+  margin: var(--space-7) 0 var(--space-4); color: var(--color-text); font-family: var(--font-serif);
+  font-size: 1.15rem; font-variation-settings: "opsz" 30; font-weight: 600;
+}
+.olist-table-followup { margin-top: var(--space-6); }
+.olist-data { padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+.olist-data h2 { color: var(--color-muted); font-size: 0.85rem; }
+.olist-data .section-eyebrow, .olist-data .project-writeup { color: var(--color-muted); font-size: 0.85rem; }
 .markethub-section { max-width: var(--prose-width); }
 .external-project-link, .cv-link {
   display: inline-block; margin-top: var(--space-7); padding: var(--space-3) var(--space-4);

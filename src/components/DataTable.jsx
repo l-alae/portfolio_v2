@@ -12,7 +12,7 @@ export default function DataTable({ columns, rows, label }) {
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.cluster}>
+              <tr key={row[columns[0].key]}>
                 {columns.map((column) => (
                   <td className={column.numeric ? 'is-numeric' : undefined} key={column.key}>{row[column.key]}</td>
                 ))}

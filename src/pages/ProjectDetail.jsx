@@ -23,6 +23,7 @@ export default function ProjectDetail() {
   if (!project) return <NotFound />
   const key = `projects.${project.i18nKey}`
   const isCapitalBikeshare = project.i18nKey === 'capitalBikeshare'
+  const isOlist = project.i18nKey === 'olist'
   const isMarketHub = project.i18nKey === 'markethub'
   const imageFiles = {
     eltPipeline: ['elt-dag.png', 'elt-query.png', 'elt-tests.png'],
@@ -48,6 +49,21 @@ export default function ProjectDetail() {
     { key: 'weekdayPeak', label: t(`${key}.table.columns.weekdayPeak`) },
     { key: 'medianTrips', label: t(`${key}.table.columns.medianTrips`), numeric: true },
   ] : []
+  const olistImages = isOlist ? Object.fromEntries(
+    [
+      ['lifecycle', 'lifecycle_dashboard.png'],
+      ['reliability', 'reliability_dashboard.png'],
+      ['model', 'model_view.png'],
+    ].map(([name, filename]) => [name, {
+      filename,
+      src: `${import.meta.env.BASE_URL}images/${filename}`,
+      caption: t(`${key}.images.${name}.caption`),
+    }]),
+  ) : {}
+  const olistTableColumns = isOlist ? [
+    { key: 'rule', label: t(`${key}.table.columns.rule`) },
+    { key: 'threshold', label: t(`${key}.table.columns.threshold`) },
+  ] : []
 
   return (
     <PageTransition>
@@ -56,7 +72,7 @@ export default function ProjectDetail() {
         <PageHeader
           eyebrow={t('projectDetail.eyebrow')}
           title={t(`${key}.title`)}
-          lede={(isCapitalBikeshare || isMarketHub) ? t(`${key}.lede`) : undefined}
+          lede={(isCapitalBikeshare || isOlist || isMarketHub) ? t(`${key}.lede`) : undefined}
         />
         <motion.div variants={pageItemVariants}>
           {(project.liveUrl || project.repoUrl) && (
@@ -80,7 +96,7 @@ export default function ProjectDetail() {
               {t(`${key}.notice.body`)}
             </Notice>
           )}
-          <StatStrip items={t(`${key}.${isCapitalBikeshare ? 'stats' : 'meta'}`)} />
+          <StatStrip items={t(`${key}.${isCapitalBikeshare || isOlist ? 'stats' : 'meta'}`)} />
           {t(`${key}.tech`).length > 0 && (
             <div className="project-tech project-detail-tech">
               {t(`${key}.tech`).map((item) => <span className="tech-tag" key={item}>{item}</span>)}
@@ -117,6 +133,36 @@ export default function ProjectDetail() {
 
               <Section eyebrow={t(`${key}.sections.attribution.eyebrow`)} title={t(`${key}.sections.attribution.title`)} className="capital-section capital-attribution">
                 <div className="project-writeup"><RichText value={t(`${key}.sections.attribution.body`)} /></div>
+              </Section>
+            </div>
+          ) : isOlist ? (
+            <div className="olist-case-study">
+              <ImageGallery images={[olistImages.lifecycle]} closeLabel={t('projectDetail.closeImage')} />
+
+              <Section eyebrow={t(`${key}.sections.findings.eyebrow`)} title={t(`${key}.sections.findings.title`)} className="olist-section">
+                <div className="project-writeup"><RichText value={t(`${key}.sections.findings.body`)} /></div>
+                <ImageGallery images={[olistImages.reliability]} closeLabel={t('projectDetail.closeImage')} />
+              </Section>
+
+              <Section eyebrow={t(`${key}.sections.method.eyebrow`)} title={t(`${key}.sections.method.title`)} className="olist-section">
+                <div className="project-writeup"><RichText value={t(`${key}.sections.method.body`)} /></div>
+                <ImageGallery images={[olistImages.model]} closeLabel={t('projectDetail.closeImage')} />
+                <h3 className="detail-subheading">{t(`${key}.sections.method.transformationsTitle`)}</h3>
+                <div className="project-writeup"><RichText value={t(`${key}.sections.method.transformations`)} /></div>
+              </Section>
+
+              <Section eyebrow={t(`${key}.sections.suppression.eyebrow`)} title={t(`${key}.sections.suppression.title`)} className="olist-section">
+                <div className="project-writeup"><RichText value={t(`${key}.sections.suppression.intro`)} /></div>
+                <DataTable columns={olistTableColumns} rows={t(`${key}.table.rows`)} label={t(`${key}.table.label`)} />
+                <div className="project-writeup olist-table-followup"><RichText value={t(`${key}.sections.suppression.body`)} /></div>
+              </Section>
+
+              <Section eyebrow={t(`${key}.sections.limitations.eyebrow`)} title={t(`${key}.sections.limitations.title`)} className="olist-section">
+                <div className="project-writeup"><RichText value={t(`${key}.sections.limitations.body`)} /></div>
+              </Section>
+
+              <Section eyebrow={t(`${key}.sections.data.eyebrow`)} title={t(`${key}.sections.data.title`)} className="olist-section olist-data">
+                <div className="project-writeup"><RichText value={t(`${key}.sections.data.body`)} /></div>
               </Section>
             </div>
           ) : isMarketHub ? (

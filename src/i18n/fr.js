@@ -285,13 +285,86 @@ export default {
       ],
       images: [{ caption: 'INTERFACE DE PRÉDICTION' }],
     },
-    powerbi: {
-      title: 'Power BI',
-      blurb: 'Détails du projet à venir.',
-      tech: [],
-      meta: [{ label: 'STATUT', value: 'En cours' }],
-      body: ['Ce projet est toujours en cours. L’étude de cas sera publiée prochainement.'],
-      images: [],
+    olist: {
+      title: 'Cycle de vie des vendeurs sur Olist',
+      blurb: 'Une analyse Power BI de la rétention des vendeurs et de la fiabilité des livraisons sur près de 100 000 commandes Olist.',
+      lede: 'Un rapport Power BI en deux pages sur le Brazilian E-Commerce Public Dataset, conçu autour d’une question : les vendeurs d’Olist s’améliorent-ils ou se dégradent-ils au fil de leur propre cycle de vie, et quelle part de cette évolution tient à la fiabilité des livraisons plutôt qu’au volume ?',
+      tech: ['Power BI', 'Power Query', 'M', 'DAX', 'Star schema'],
+      stats: [
+        { label: 'JEU DE DONNÉES', value: '~100 000 commandes' },
+        { label: 'PÉRIODE', value: '2016 → 2018' },
+        { label: 'COHORTES', value: '18 mensuelles' },
+        { label: 'OUTIL', value: 'Power BI Desktop' },
+      ],
+      images: {
+        lifecycle: { caption: 'CYCLE DE VIE DES VENDEURS — TRIANGLE DE RÉTENTION PAR COHORTE ET VUE PAR ANCIENNETÉ' },
+        reliability: { caption: 'FIABILITÉ DES LIVRAISONS — DISTRIBUTION DE L’ÉCART AUX ESTIMATIONS ET SCORE D’AVIS SELON LE RETARD' },
+        model: { caption: 'SCHÉMA EN ÉTOILE — ORDERITEMS COMME TABLE DE FAITS, CINQ RELATIONS À SENS UNIQUE' },
+      },
+      sections: {
+        findings: {
+          eyebrow: '01',
+          title: 'Résultats',
+          body: [
+            { lead: 'La rétention des vendeurs est structurellement stable.', rest: ' Sur dix-huit cohortes mensuelles, la rétention au premier mois se situe entre 50 % et 71 %, et celle au sixième mois entre 37 % et 57 %, sans tendance d’une cohorte à l’autre. Les vendeurs ont quitté la plateforme à un rythme constant pendant deux années de croissance : rien, sur cette période, n’a modifié leur fidélité.' },
+            { lead: 'Les estimations de livraison comportent une marge médiane de douze jours.', rest: ' La moitié des commandes arrive au moins douze jours avant la date promise, ce qui rend ici le taux de livraison à l’heure peu utile : il reste proche de 93 % et varie à peine. L’information se trouve plutôt dans la forme de la distribution des écarts et dans l’ampleur de sa traîne.' },
+            { lead: 'Un retard sur une estimation déjà prudente coûte environ deux points de score d’avis.', rest: ' Les commandes livrées en avance ou le jour promis obtiennent entre 4,2 et 4,4. Celles livrées avec plus de huit jours de retard passent sous 2. Les retards sont rares — autour de 7 % — mais disproportionnellement coûteux.' },
+          ],
+        },
+        method: {
+          eyebrow: '02',
+          title: 'Méthode',
+          body: [
+            { lead: 'Sept fichiers CSV transformés dans Power Query en un schéma en étoile, avec OrderItems comme table de faits.', rest: '' },
+            { lead: 'La granularité varie dans le modèle, et celui-ci la laisse visible.', rest: ' Les avis et les dates de livraison sont enregistrés par commande ; les ventes le sont par article de commande. Les attributs au niveau de la commande restent dans une table séparée au lieu d’être aplatis sur les lignes d’articles, afin que les moyennes par commande ne soient pas pondérées par le nombre d’articles. Cela ajoute une jointure, mais conserve une frontière de granularité lisible.' },
+            { lead: 'La propagation des filtres à travers cette frontière utilise CROSSFILTER dans les mesures concernées plutôt que des relations bidirectionnelles.', rest: ' Les cinq relations sont à sens unique. Un filtrage bidirectionnel aurait fonctionné ici, mais aurait créé des chemins de filtre ambigus dès qu’une seconde route aurait relié deux tables.' },
+            { lead: 'L’affectation à une cohorte est une colonne calculée dans la dimension des vendeurs,', rest: ' car le mois de première vente d’un vendeur est un attribut fixe qui ne varie jamais avec le contexte de filtre. L’ancienneté est une colonne calculée dans la table de faits à partir des débuts de mois plutôt que des dates brutes — DATEDIFF compte les frontières calendaires, si bien qu’une différence entre dates brutes ferait dépendre l’ancienneté du jour du mois.' },
+            { lead: 'La rétention, la fiabilité et tous les taux sont des mesures,', rest: ' avec DIVIDE afin qu’un contexte de filtre vide renvoie une valeur vide plutôt qu’une erreur.' },
+          ],
+          transformationsTitle: 'Transformations notables',
+          transformations: [
+            { lead: 'Les avis en double sont réduits au plus récent par commande,', rest: ' avec une mise en mémoire tampon avant la déduplication pour respecter le tri. Sans cela, la jointure Orders–Reviews multiplie les lignes et chaque moyenne d’avis compte certaines commandes deux fois.' },
+            { lead: 'La traduction des catégories est résolue par une jointure externe gauche,', rest: ' ce qui conserve les quelque 600 produits sans catégorie qu’une jointure interne aurait supprimés avec leurs ventes.' },
+            { lead: 'Les commandes non livrées sont conservées plutôt que filtrées.', rest: ' L’annulation et la non-livraison sont elles-mêmes des signaux de fiabilité ; le filtrage intervient dans les mesures, où le choix reste visible et réversible.' },
+            { lead: 'Les types sont définis explicitement avec un argument de culture en-US,', rest: ' afin que l’analyse des décimales ne dépende pas des paramètres régionaux de la machine.' },
+          ],
+        },
+        suppression: {
+          eyebrow: '03',
+          title: 'Règles de suppression',
+          intro: ['Tous les seuils sont déclarés dans des VAR nommées au début des mesures qui les utilisent, et affichés sur les pages du rapport.'],
+          body: [
+            { lead: 'Le seuil d’observabilité est le plus important.', rest: ' Sans lui, les dernières lignes du triangle de rétention comparent des cohortes qui ont eu le temps de perdre des vendeurs à d’autres qui ne l’ont pas eu — un biais de survie directement inscrit dans l’axe.' },
+          ],
+        },
+        limitations: {
+          eyebrow: '04',
+          title: 'Limites',
+          body: [
+            { lead: 'Les scores d’avis sont établis par commande et attribués à chaque vendeur de cette commande.', rest: ' Une commande contenant des articles de trois vendeurs transmet son score unique aux trois. Les données enregistrent la satisfaction par commande, pas par vendeur : il s’agit d’une propriété du jeu de données plutôt que d’un choix de modélisation.' },
+            { lead: 'Des cohortes au niveau client ne sont pas possibles ici.', rest: ' Presque tous les clients n’achètent qu’une fois, et customer_id est dans la source une clé de substitution par commande plutôt qu’un identifiant client — la véritable clé est customer_unique_id, pour laquelle le taux de réachat avoisine 3 %. Les cohortes portent donc sur les vendeurs.' },
+            { lead: 'Les totaux par État ne s’additionnent pas au total général.', rest: ' Une commande contenant des articles provenant de deux États compte dans les deux lignes correspondantes, mais une seule fois dans le total. C’est le comportement correct pour une marketplace multivendeur, pas une erreur de rapprochement.' },
+          ],
+        },
+        data: {
+          eyebrow: '05',
+          title: 'Données',
+          body: [
+            ['Brazilian E-Commerce Public Dataset par Olist — environ 100 000 commandes passées entre 2016 et 2018, anonymisées et publiées par Olist. Disponible sur ', { text: 'Kaggle', href: 'https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce' }, '.'],
+            'Deux tables sources ont été volontairement exclues : la table geolocation, qui contient près d’un million de lignes de coordonnées par code postal et duplique la géographie au niveau des États déjà présente dans les enregistrements des vendeurs et des clients ; et la table payments, dont les données d’échelonnement se situent à la granularité de la commande et créent une seconde multiplication face aux articles sans contribuer à la question étudiée.',
+          ],
+        },
+      },
+      table: {
+        label: 'Règles de suppression et seuils',
+        columns: { rule: 'Règle', threshold: 'Seuil' },
+        rows: [
+          { rule: 'Taille minimale de la cohorte', threshold: '20 sellers' },
+          { rule: 'Nombre minimal de vendeurs actifs par cellule de cohorte', threshold: '5' },
+          { rule: 'Seuil d’observabilité', threshold: 'Cells beyond July 2018 excluded (data ends October 2018)' },
+          { rule: 'Nuage de vendeurs', threshold: 'Sellers with 30+ orders' },
+        ],
+      },
     },
     markethub: {
       title: 'MarketHub — Marketplace full-stack',

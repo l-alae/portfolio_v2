@@ -285,13 +285,86 @@ export default {
       ],
       images: [{ caption: 'PREDICTION INTERFACE' }],
     },
-    powerbi: {
-      title: 'Power BI',
-      blurb: 'Project details coming soon.',
-      tech: [],
-      meta: [{ label: 'STATUS', value: 'In progress' }],
-      body: ['This project is still in progress. The write-up will follow.'],
-      images: [],
+    olist: {
+      title: 'Seller Lifecycle on Olist',
+      blurb: 'Seller retention and delivery reliability across roughly 100,000 Olist orders, analysed in Power BI.',
+      lede: 'A two-page Power BI report on the Brazilian E-Commerce Public Dataset, built to answer one question: do sellers on Olist get better or worse over their own lifetime, and how much of that is delivery reliability rather than volume?',
+      tech: ['Power BI', 'Power Query', 'M', 'DAX', 'Star schema'],
+      stats: [
+        { label: 'DATASET', value: '~100,000 orders' },
+        { label: 'PERIOD', value: '2016 → 2018' },
+        { label: 'COHORTS', value: '18 monthly' },
+        { label: 'TOOL', value: 'Power BI Desktop' },
+      ],
+      images: {
+        lifecycle: { caption: 'SELLER LIFECYCLE — COHORT RETENTION TRIANGLE AND TENURE VIEW' },
+        reliability: { caption: 'DELIVERY RELIABILITY — ESTIMATE GAP DISTRIBUTION AND REVIEW SCORE BY LATENESS' },
+        model: { caption: 'STAR SCHEMA — ORDERITEMS AS FACT, FIVE SINGLE-DIRECTION RELATIONSHIPS' },
+      },
+      sections: {
+        findings: {
+          eyebrow: '01',
+          title: 'Findings',
+          body: [
+            { lead: 'Seller retention is structurally flat.', rest: ' Across eighteen monthly cohorts, month-1 retention sits between 50% and 71% and month-6 between 37% and 57%, with no trend across cohorts. Sellers churned at a stable rate through two years of platform growth — nothing in that period changed seller stickiness.' },
+            { lead: 'Delivery estimates are padded by a median of twelve days.', rest: ' Half of all orders arrive at least twelve days before the promised date, which makes on-time delivery a useless metric here: it sits near 93% and barely moves. What carries information is the shape of the gap distribution and the size of its tail.' },
+            { lead: 'Lateness against an already-padded estimate costs roughly two points of review score.', rest: ' Orders delivered early or on the promised day score between 4.2 and 4.4. Orders more than eight days late score below 2. Late deliveries are rare — around 7% — and disproportionately expensive.' },
+          ],
+        },
+        method: {
+          eyebrow: '02',
+          title: 'Method',
+          body: [
+            { lead: 'Seven CSVs shaped in Power Query into a star schema, with OrderItems as the fact table.', rest: '' },
+            { lead: 'The grain differs across the model, and the model keeps that visible.', rest: ' Reviews and delivery dates are recorded per order; sales are recorded per order item. Order-level attributes stayed on a separate table rather than being flattened onto the item rows, so order-level averages are not item-weighted. The cost is one extra hop; the benefit is that the grain boundary stays legible instead of being smeared.' },
+            { lead: 'Filter propagation across that boundary uses CROSSFILTER inside individual measures rather than bidirectional relationships.', rest: ' All five relationships are single-direction. Bidirectional filtering would have worked on this model and created ambiguous filter paths the moment a second route existed between two tables.' },
+            { lead: 'Cohort assignment is a calculated column on the seller dimension,', rest: " since a seller's first-sale month is a fixed attribute that never varies with filter context. Tenure is a calculated column on the fact table, computed from month starts rather than raw dates — DATEDIFF counts calendar boundaries, so differencing raw dates would make tenure depend on day-of-month." },
+            { lead: 'Retention, reliability and all rates are measures,', rest: ' using DIVIDE so an empty filter context returns blank rather than an error.' },
+          ],
+          transformationsTitle: 'Transformations of note',
+          transformations: [
+            { lead: 'Duplicate reviews deduplicated to the most recent per order,', rest: ' buffered before deduplication so the sort is respected. Without it the Orders–Reviews join fans out and every review average double-counts.' },
+            { lead: 'Category translation resolved with a left outer join,', rest: ' preserving the roughly 600 uncategorised products an inner join would have deleted along with their sales.' },
+            { lead: 'Undelivered orders retained rather than filtered out.', rest: ' Cancellation and non-delivery are themselves reliability signals; the filtering happens in measures, where the choice is visible and reversible.' },
+            { lead: 'Types set explicitly with an en-US culture argument,', rest: " so decimal parsing does not depend on the machine's regional settings." },
+          ],
+        },
+        suppression: {
+          eyebrow: '03',
+          title: 'Suppression rules',
+          intro: ['All thresholds are declared in named VARs at the top of the measures that use them, and stated on the report pages themselves.'],
+          body: [
+            { lead: 'The observability cutoff matters most.', rest: ' Without it, the bottom rows of the retention triangle compare cohorts that had time to churn against cohorts that did not — survivorship bias built directly into the axis.' },
+          ],
+        },
+        limitations: {
+          eyebrow: '04',
+          title: 'Limitations',
+          body: [
+            { lead: 'Review scores are per order and attributed to every seller in that order.', rest: ' An order containing items from three sellers contributes its single score to all three. The data records satisfaction per order, not per seller, so this is a property of the dataset rather than a modelling choice.' },
+            { lead: 'Customer-level cohorts are not possible here.', rest: ' Nearly all customers purchase once, and customer_id in the source is a per-order surrogate key rather than a customer identifier — the real key is customer_unique_id, against which repeat purchase is around 3%. Cohorts are therefore on sellers.' },
+            { lead: 'State-level totals do not sum to the grand total.', rest: ' An order containing items from two states counts in both state rows and once in the total. That is correct behaviour for a multi-seller marketplace, not a reconciliation error.' },
+          ],
+        },
+        data: {
+          eyebrow: '05',
+          title: 'Data',
+          body: [
+            ['Brazilian E-Commerce Public Dataset by Olist — approximately 100,000 orders placed between 2016 and 2018, anonymised and released by Olist. Available on ', { text: 'Kaggle', href: 'https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce' }, '.'],
+            'Two source tables were deliberately excluded: the geolocation table, around a million rows of zip-code coordinates duplicating state-level geography already present on the seller and customer records; and the payments table, whose instalment data sits at order grain and creates a second fan-out against order items without answering the question.',
+          ],
+        },
+      },
+      table: {
+        label: 'Suppression rules and thresholds',
+        columns: { rule: 'Rule', threshold: 'Threshold' },
+        rows: [
+          { rule: 'Minimum cohort size', threshold: '20 sellers' },
+          { rule: 'Minimum active sellers per cohort cell', threshold: '5' },
+          { rule: 'Observability cutoff', threshold: 'Cells beyond July 2018 excluded (data ends October 2018)' },
+          { rule: 'Seller scatter', threshold: 'Sellers with 30+ orders' },
+        ],
+      },
     },
     markethub: {
       title: 'MarketHub — Full-Stack Marketplace',
