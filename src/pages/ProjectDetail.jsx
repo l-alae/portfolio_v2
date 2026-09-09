@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
 import DataTable from '../components/DataTable'
+import FloatingProjectBack from '../components/FloatingProjectBack'
 import ImageGallery from '../components/ImageGallery'
 import Notice from '../components/Notice'
 import RichText from '../components/RichText'
@@ -68,6 +69,7 @@ export default function ProjectDetail() {
   return (
     <PageTransition>
       <article className="page project-detail-page">
+        <FloatingProjectBack label={t('projectDetail.floatingBackAria')} />
         <Link className="project-back-link" to="/projects">{t('projectDetail.back')}</Link>
         <PageHeader
           eyebrow={t('projectDetail.eyebrow')}

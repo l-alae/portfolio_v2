@@ -9,7 +9,6 @@ export default function Header() {
   const { t } = useLanguage()
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
-  const isProjectDetail = /^\/projects\/[^/]+\/?$/.test(location.pathname)
 
   useEffect(() => setMenuOpen(false), [location.pathname])
 
@@ -29,24 +28,11 @@ export default function Header() {
             <span className="logo-full">{t('brand.name')}</span>
             <span className="logo-short">{t('brand.shortName')}</span>
           </Link>
-          <div className="header-navigation">
-            <Nav className="desktop-nav" />
-            {isProjectDetail && (
-              <Link className="project-header-back desktop-project-back" to="/projects" aria-label={t('projectDetail.headerBackAria')}>
-                <span className="project-header-back-arrow" aria-hidden="true">←</span>
-                <span>{t('projectDetail.headerBack')}</span>
-              </Link>
-            )}
-          </div>
+          <Nav className="desktop-nav" />
         </div>
         <div className="header-actions">
           <LanguageToggle />
           <ThemeToggle />
-          {isProjectDetail && (
-            <Link className="project-header-back mobile-project-back" to="/projects" aria-label={t('projectDetail.headerBackAria')}>
-              <span className="project-header-back-arrow" aria-hidden="true">←</span>
-            </Link>
-          )}
           <button
             className="icon-button menu-button"
             type="button"
