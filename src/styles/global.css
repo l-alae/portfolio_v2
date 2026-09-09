@@ -202,7 +202,9 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .all-project-rows { margin-top: var(--space-8); border-bottom: 1px solid var(--color-border); }
 .all-project-rows .project-card { grid-template-columns: 7.5rem minmax(0, 1fr); }
 .project-back-link {
-  display: inline-block; margin-bottom: var(--space-7); color: var(--color-muted); font-family: var(--font-mono);
+  position: sticky; z-index: 10; top: calc(var(--header-height) + var(--space-2));
+  display: inline-block; margin-bottom: var(--space-7); padding-block: var(--space-1);
+  background-color: var(--color-background); color: var(--color-muted); font-family: var(--font-mono);
   font-size: var(--font-size-ui); letter-spacing: var(--tracking-ui); text-decoration: none; text-transform: uppercase;
 }
 .project-back-link:hover { color: var(--color-accent); }
@@ -457,6 +459,7 @@ a { text-decoration-color: var(--color-accent); text-underline-offset: 0.22em; }
 .lightbox-figure img { display: block; max-width: 90vw; max-height: calc(90vh - 3rem); object-fit: contain; }
 .lightbox figcaption { max-width: 90vw; color: var(--color-surface); text-align: center; }
 @media (min-width: 48rem) {
+  .project-back-link { top: calc(var(--header-height) + var(--space-4)); }
   .container, .main-content { padding-inline: var(--space-6); }
   .desktop-nav { display: block; }
   .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
